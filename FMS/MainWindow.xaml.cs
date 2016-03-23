@@ -24,5 +24,25 @@ namespace FMS
         {
             InitializeComponent();
         }
+
+        private void Farmer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Animal_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Property_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Corn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
