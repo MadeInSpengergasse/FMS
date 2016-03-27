@@ -1,0 +1,604 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="a_animal">
+          <Key>
+            <PropertyRef Name="a_id" />
+          </Key>
+          <Property Name="a_id" Type="int" Nullable="false" />
+          <Property Name="a_animal" Type="text" />
+          <Property Name="a_age" Type="real" Nullable="false" />
+          <Property Name="a_weight" Type="real" Nullable="false" />
+          <Property Name="a_classification" Type="int" Nullable="false" />
+          <Property Name="f_farmer_f_id" Type="int" Nullable="false" />
+          <Property Name="a_pr_product" Type="int" />
+        </EntityType>
+        <EntityType Name="c_corn">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="int" Nullable="false" />
+          <Property Name="c_type" Type="text" Nullable="false" />
+          <Property Name="c_class" Type="int" />
+          <Property Name="c_dour" Type="int" Nullable="false" />
+          <Property Name="c_pr_product" Type="int" />
+        </EntityType>
+        <EntityType Name="cf_farmer_has_corn">
+          <Key>
+            <PropertyRef Name="cf_f_farmer" />
+            <PropertyRef Name="cf_c_corn" />
+          </Key>
+          <Property Name="cf_f_farmer" Type="int" Nullable="false" />
+          <Property Name="cf_c_corn" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cu_customer">
+          <Key>
+            <PropertyRef Name="cu_id" />
+          </Key>
+          <Property Name="cu_id" Type="int" Nullable="false" />
+          <Property Name="cu_lastname" Type="text" Nullable="false" />
+          <Property Name="cu_firstname" Type="text" Nullable="false" />
+          <Property Name="cu_address" Type="text" />
+        </EntityType>
+        <EntityType Name="f_farmer">
+          <Key>
+            <PropertyRef Name="f_id" />
+          </Key>
+          <Property Name="f_id" Type="int" Nullable="false" />
+          <Property Name="f_firstname" Type="text" Nullable="false" />
+          <Property Name="f_lastname" Type="text" Nullable="false" />
+          <Property Name="f_address" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="fpr_farmer_sells_product">
+          <Key>
+            <PropertyRef Name="fpr_f_farmer" />
+            <PropertyRef Name="fpr_pr_product" />
+          </Key>
+          <Property Name="fpr_f_farmer" Type="int" Nullable="false" />
+          <Property Name="fpr_pr_product" Type="int" Nullable="false" />
+          <Property Name="fpr_price" Type="real" Nullable="false" />
+          <Property Name="cu_customer_cu_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="p_property">
+          <Key>
+            <PropertyRef Name="p_id" />
+          </Key>
+          <Property Name="p_id" Type="int" Nullable="false" />
+          <Property Name="p_name" Type="text" Nullable="false" />
+          <Property Name="p_description" Type="text" />
+          <Property Name="p_f_farmer" Type="int" Nullable="false" />
+          <Property Name="p_area" Type="real" Nullable="false" />
+          <Property Name="p_c_corn" Type="int" />
+        </EntityType>
+        <EntityType Name="pr_product">
+          <Key>
+            <PropertyRef Name="pr_id" />
+          </Key>
+          <Property Name="pr_id" Type="int" Nullable="false" />
+          <Property Name="pr_type" Type="text" Nullable="false" />
+          <Property Name="pr_class" Type="int" />
+        </EntityType>
+        <Association Name="fk_a_animal_f_farmer1">
+          <End Role="f_farmer" Type="Self.f_farmer" Multiplicity="1" />
+          <End Role="a_animal" Type="Self.a_animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="f_farmer">
+              <PropertyRef Name="f_id" />
+            </Principal>
+            <Dependent Role="a_animal">
+              <PropertyRef Name="f_farmer_f_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_a_animal_pr_product1">
+          <End Role="pr_product" Type="Self.pr_product" Multiplicity="0..1" />
+          <End Role="a_animal" Type="Self.a_animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pr_product">
+              <PropertyRef Name="pr_id" />
+            </Principal>
+            <Dependent Role="a_animal">
+              <PropertyRef Name="a_pr_product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_c_corn_pr_product1">
+          <End Role="pr_product" Type="Self.pr_product" Multiplicity="0..1" />
+          <End Role="c_corn" Type="Self.c_corn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pr_product">
+              <PropertyRef Name="pr_id" />
+            </Principal>
+            <Dependent Role="c_corn">
+              <PropertyRef Name="c_pr_product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_f_farmer_has_c_corn_c_corn1">
+          <End Role="c_corn" Type="Self.c_corn" Multiplicity="1" />
+          <End Role="cf_farmer_has_corn" Type="Self.cf_farmer_has_corn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="c_corn">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="cf_farmer_has_corn">
+              <PropertyRef Name="cf_c_corn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_f_farmer_has_c_corn_f_farmer1">
+          <End Role="f_farmer" Type="Self.f_farmer" Multiplicity="1" />
+          <End Role="cf_farmer_has_corn" Type="Self.cf_farmer_has_corn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="f_farmer">
+              <PropertyRef Name="f_id" />
+            </Principal>
+            <Dependent Role="cf_farmer_has_corn">
+              <PropertyRef Name="cf_f_farmer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_f_farmer_has_pr_product_f_farmer1">
+          <End Role="f_farmer" Type="Self.f_farmer" Multiplicity="1" />
+          <End Role="fpr_farmer_sells_product" Type="Self.fpr_farmer_sells_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="f_farmer">
+              <PropertyRef Name="f_id" />
+            </Principal>
+            <Dependent Role="fpr_farmer_sells_product">
+              <PropertyRef Name="fpr_f_farmer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_f_farmer_has_pr_product_pr_product1">
+          <End Role="pr_product" Type="Self.pr_product" Multiplicity="1" />
+          <End Role="fpr_farmer_sells_product" Type="Self.fpr_farmer_sells_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pr_product">
+              <PropertyRef Name="pr_id" />
+            </Principal>
+            <Dependent Role="fpr_farmer_sells_product">
+              <PropertyRef Name="fpr_pr_product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_fpr_farmer_sells_product_cu_customer1">
+          <End Role="cu_customer" Type="Self.cu_customer" Multiplicity="1" />
+          <End Role="fpr_farmer_sells_product" Type="Self.fpr_farmer_sells_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cu_customer">
+              <PropertyRef Name="cu_id" />
+            </Principal>
+            <Dependent Role="fpr_farmer_sells_product">
+              <PropertyRef Name="cu_customer_cu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_p_property_c_corn1">
+          <End Role="c_corn" Type="Self.c_corn" Multiplicity="0..1" />
+          <End Role="p_property" Type="Self.p_property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="c_corn">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="p_property">
+              <PropertyRef Name="p_c_corn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_p_property_f_farmer1">
+          <End Role="f_farmer" Type="Self.f_farmer" Multiplicity="1" />
+          <End Role="p_property" Type="Self.p_property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="f_farmer">
+              <PropertyRef Name="f_id" />
+            </Principal>
+            <Dependent Role="p_property">
+              <PropertyRef Name="p_f_farmer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FMSModelStoreContainer">
+          <EntitySet Name="a_animal" EntityType="Self.a_animal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="c_corn" EntityType="Self.c_corn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cf_farmer_has_corn" EntityType="Self.cf_farmer_has_corn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cu_customer" EntityType="Self.cu_customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="f_farmer" EntityType="Self.f_farmer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fpr_farmer_sells_product" EntityType="Self.fpr_farmer_sells_product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="p_property" EntityType="Self.p_property" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pr_product" EntityType="Self.pr_product" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_a_animal_f_farmer1" Association="Self.fk_a_animal_f_farmer1">
+            <End Role="f_farmer" EntitySet="f_farmer" />
+            <End Role="a_animal" EntitySet="a_animal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_a_animal_pr_product1" Association="Self.fk_a_animal_pr_product1">
+            <End Role="pr_product" EntitySet="pr_product" />
+            <End Role="a_animal" EntitySet="a_animal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_c_corn_pr_product1" Association="Self.fk_c_corn_pr_product1">
+            <End Role="pr_product" EntitySet="pr_product" />
+            <End Role="c_corn" EntitySet="c_corn" />
+          </AssociationSet>
+          <AssociationSet Name="fk_f_farmer_has_c_corn_c_corn1" Association="Self.fk_f_farmer_has_c_corn_c_corn1">
+            <End Role="c_corn" EntitySet="c_corn" />
+            <End Role="cf_farmer_has_corn" EntitySet="cf_farmer_has_corn" />
+          </AssociationSet>
+          <AssociationSet Name="fk_f_farmer_has_c_corn_f_farmer1" Association="Self.fk_f_farmer_has_c_corn_f_farmer1">
+            <End Role="f_farmer" EntitySet="f_farmer" />
+            <End Role="cf_farmer_has_corn" EntitySet="cf_farmer_has_corn" />
+          </AssociationSet>
+          <AssociationSet Name="fk_f_farmer_has_pr_product_f_farmer1" Association="Self.fk_f_farmer_has_pr_product_f_farmer1">
+            <End Role="f_farmer" EntitySet="f_farmer" />
+            <End Role="fpr_farmer_sells_product" EntitySet="fpr_farmer_sells_product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_f_farmer_has_pr_product_pr_product1" Association="Self.fk_f_farmer_has_pr_product_pr_product1">
+            <End Role="pr_product" EntitySet="pr_product" />
+            <End Role="fpr_farmer_sells_product" EntitySet="fpr_farmer_sells_product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_fpr_farmer_sells_product_cu_customer1" Association="Self.fk_fpr_farmer_sells_product_cu_customer1">
+            <End Role="cu_customer" EntitySet="cu_customer" />
+            <End Role="fpr_farmer_sells_product" EntitySet="fpr_farmer_sells_product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_p_property_c_corn1" Association="Self.fk_p_property_c_corn1">
+            <End Role="c_corn" EntitySet="c_corn" />
+            <End Role="p_property" EntitySet="p_property" />
+          </AssociationSet>
+          <AssociationSet Name="fk_p_property_f_farmer1" Association="Self.fk_p_property_f_farmer1">
+            <End Role="f_farmer" EntitySet="f_farmer" />
+            <End Role="p_property" EntitySet="p_property" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="a_animal">
+          <Key>
+            <PropertyRef Name="a_id" />
+          </Key>
+          <Property Name="a_id" Type="Int32" Nullable="false" />
+          <Property Name="a_animal1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="a_age" Type="Single" Nullable="false" />
+          <Property Name="a_weight" Type="Single" Nullable="false" />
+          <Property Name="a_classification" Type="Int32" Nullable="false" />
+          <Property Name="f_farmer_f_id" Type="Int32" Nullable="false" />
+          <Property Name="a_pr_product" Type="Int32" />
+          <NavigationProperty Name="f_farmer" Relationship="Self.fk_a_animal_f_farmer1" FromRole="a_animal" ToRole="f_farmer" />
+          <NavigationProperty Name="pr_product" Relationship="Self.fk_a_animal_pr_product1" FromRole="a_animal" ToRole="pr_product" />
+        </EntityType>
+        <EntityType Name="c_corn">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <Property Name="c_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="c_class" Type="Int32" />
+          <Property Name="c_dour" Type="Int32" Nullable="false" />
+          <Property Name="c_pr_product" Type="Int32" />
+          <NavigationProperty Name="pr_product" Relationship="Self.fk_c_corn_pr_product1" FromRole="c_corn" ToRole="pr_product" />
+          <NavigationProperty Name="p_property" Relationship="Self.fk_p_property_c_corn1" FromRole="c_corn" ToRole="p_property" />
+          <NavigationProperty Name="f_farmer" Relationship="Self.cf_farmer_has_corn" FromRole="c_corn" ToRole="f_farmer" />
+        </EntityType>
+        <EntityType Name="cu_customer">
+          <Key>
+            <PropertyRef Name="cu_id" />
+          </Key>
+          <Property Name="cu_id" Type="Int32" Nullable="false" />
+          <Property Name="cu_lastname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cu_firstname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cu_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="fpr_farmer_sells_product" Relationship="Self.fk_fpr_farmer_sells_product_cu_customer1" FromRole="cu_customer" ToRole="fpr_farmer_sells_product" />
+        </EntityType>
+        <EntityType Name="f_farmer">
+          <Key>
+            <PropertyRef Name="f_id" />
+          </Key>
+          <Property Name="f_id" Type="Int32" Nullable="false" />
+          <Property Name="f_firstname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="f_lastname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="f_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="a_animal" Relationship="Self.fk_a_animal_f_farmer1" FromRole="f_farmer" ToRole="a_animal" />
+          <NavigationProperty Name="fpr_farmer_sells_product" Relationship="Self.fk_f_farmer_has_pr_product_f_farmer1" FromRole="f_farmer" ToRole="fpr_farmer_sells_product" />
+          <NavigationProperty Name="p_property" Relationship="Self.fk_p_property_f_farmer1" FromRole="f_farmer" ToRole="p_property" />
+          <NavigationProperty Name="c_corn" Relationship="Self.cf_farmer_has_corn" FromRole="f_farmer" ToRole="c_corn" />
+        </EntityType>
+        <EntityType Name="fpr_farmer_sells_product">
+          <Key>
+            <PropertyRef Name="fpr_f_farmer" />
+            <PropertyRef Name="fpr_pr_product" />
+          </Key>
+          <Property Name="fpr_f_farmer" Type="Int32" Nullable="false" />
+          <Property Name="fpr_pr_product" Type="Int32" Nullable="false" />
+          <Property Name="fpr_price" Type="Single" Nullable="false" />
+          <Property Name="cu_customer_cu_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cu_customer" Relationship="Self.fk_fpr_farmer_sells_product_cu_customer1" FromRole="fpr_farmer_sells_product" ToRole="cu_customer" />
+          <NavigationProperty Name="f_farmer" Relationship="Self.fk_f_farmer_has_pr_product_f_farmer1" FromRole="fpr_farmer_sells_product" ToRole="f_farmer" />
+          <NavigationProperty Name="pr_product" Relationship="Self.fk_f_farmer_has_pr_product_pr_product1" FromRole="fpr_farmer_sells_product" ToRole="pr_product" />
+        </EntityType>
+        <EntityType Name="p_property">
+          <Key>
+            <PropertyRef Name="p_id" />
+          </Key>
+          <Property Name="p_id" Type="Int32" Nullable="false" />
+          <Property Name="p_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="p_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="p_f_farmer" Type="Int32" Nullable="false" />
+          <Property Name="p_area" Type="Single" Nullable="false" />
+          <Property Name="p_c_corn" Type="Int32" />
+          <NavigationProperty Name="c_corn" Relationship="Self.fk_p_property_c_corn1" FromRole="p_property" ToRole="c_corn" />
+          <NavigationProperty Name="f_farmer" Relationship="Self.fk_p_property_f_farmer1" FromRole="p_property" ToRole="f_farmer" />
+        </EntityType>
+        <EntityType Name="pr_product">
+          <Key>
+            <PropertyRef Name="pr_id" />
+          </Key>
+          <Property Name="pr_id" Type="Int32" Nullable="false" />
+          <Property Name="pr_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pr_class" Type="Int32" />
+          <NavigationProperty Name="a_animal" Relationship="Self.fk_a_animal_pr_product1" FromRole="pr_product" ToRole="a_animal" />
+          <NavigationProperty Name="c_corn" Relationship="Self.fk_c_corn_pr_product1" FromRole="pr_product" ToRole="c_corn" />
+          <NavigationProperty Name="fpr_farmer_sells_product" Relationship="Self.fk_f_farmer_has_pr_product_pr_product1" FromRole="pr_product" ToRole="fpr_farmer_sells_product" />
+        </EntityType>
+        <Association Name="fk_a_animal_f_farmer1">
+          <End Role="f_farmer" Type="Self.f_farmer" Multiplicity="1" />
+          <End Role="a_animal" Type="Self.a_animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="f_farmer">
+              <PropertyRef Name="f_id" />
+            </Principal>
+            <Dependent Role="a_animal">
+              <PropertyRef Name="f_farmer_f_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_a_animal_pr_product1">
+          <End Role="pr_product" Type="Self.pr_product" Multiplicity="0..1" />
+          <End Role="a_animal" Type="Self.a_animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pr_product">
+              <PropertyRef Name="pr_id" />
+            </Principal>
+            <Dependent Role="a_animal">
+              <PropertyRef Name="a_pr_product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_c_corn_pr_product1">
+          <End Role="pr_product" Type="Self.pr_product" Multiplicity="0..1" />
+          <End Role="c_corn" Type="Self.c_corn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pr_product">
+              <PropertyRef Name="pr_id" />
+            </Principal>
+            <Dependent Role="c_corn">
+              <PropertyRef Name="c_pr_product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_p_property_c_corn1">
+          <End Role="c_corn" Type="Self.c_corn" Multiplicity="0..1" />
+          <End Role="p_property" Type="Self.p_property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="c_corn">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="p_property">
+              <PropertyRef Name="p_c_corn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_fpr_farmer_sells_product_cu_customer1">
+          <End Role="cu_customer" Type="Self.cu_customer" Multiplicity="1" />
+          <End Role="fpr_farmer_sells_product" Type="Self.fpr_farmer_sells_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cu_customer">
+              <PropertyRef Name="cu_id" />
+            </Principal>
+            <Dependent Role="fpr_farmer_sells_product">
+              <PropertyRef Name="cu_customer_cu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_f_farmer_has_pr_product_f_farmer1">
+          <End Role="f_farmer" Type="Self.f_farmer" Multiplicity="1" />
+          <End Role="fpr_farmer_sells_product" Type="Self.fpr_farmer_sells_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="f_farmer">
+              <PropertyRef Name="f_id" />
+            </Principal>
+            <Dependent Role="fpr_farmer_sells_product">
+              <PropertyRef Name="fpr_f_farmer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_p_property_f_farmer1">
+          <End Role="f_farmer" Type="Self.f_farmer" Multiplicity="1" />
+          <End Role="p_property" Type="Self.p_property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="f_farmer">
+              <PropertyRef Name="f_id" />
+            </Principal>
+            <Dependent Role="p_property">
+              <PropertyRef Name="p_f_farmer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_f_farmer_has_pr_product_pr_product1">
+          <End Role="pr_product" Type="Self.pr_product" Multiplicity="1" />
+          <End Role="fpr_farmer_sells_product" Type="Self.fpr_farmer_sells_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pr_product">
+              <PropertyRef Name="pr_id" />
+            </Principal>
+            <Dependent Role="fpr_farmer_sells_product">
+              <PropertyRef Name="fpr_pr_product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cf_farmer_has_corn">
+          <End Role="c_corn" Type="Self.c_corn" Multiplicity="*" />
+          <End Role="f_farmer" Type="Self.f_farmer" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="FMSentities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="a_animal" EntityType="Self.a_animal" />
+          <EntitySet Name="c_corn" EntityType="Self.c_corn" />
+          <EntitySet Name="cu_customer" EntityType="Self.cu_customer" />
+          <EntitySet Name="f_farmer" EntityType="Self.f_farmer" />
+          <EntitySet Name="fpr_farmer_sells_product" EntityType="Self.fpr_farmer_sells_product" />
+          <EntitySet Name="p_property" EntityType="Self.p_property" />
+          <EntitySet Name="pr_product" EntityType="Self.pr_product" />
+          <AssociationSet Name="fk_a_animal_f_farmer1" Association="Self.fk_a_animal_f_farmer1">
+            <End Role="f_farmer" EntitySet="f_farmer" />
+            <End Role="a_animal" EntitySet="a_animal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_a_animal_pr_product1" Association="Self.fk_a_animal_pr_product1">
+            <End Role="pr_product" EntitySet="pr_product" />
+            <End Role="a_animal" EntitySet="a_animal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_c_corn_pr_product1" Association="Self.fk_c_corn_pr_product1">
+            <End Role="pr_product" EntitySet="pr_product" />
+            <End Role="c_corn" EntitySet="c_corn" />
+          </AssociationSet>
+          <AssociationSet Name="fk_p_property_c_corn1" Association="Self.fk_p_property_c_corn1">
+            <End Role="c_corn" EntitySet="c_corn" />
+            <End Role="p_property" EntitySet="p_property" />
+          </AssociationSet>
+          <AssociationSet Name="fk_fpr_farmer_sells_product_cu_customer1" Association="Self.fk_fpr_farmer_sells_product_cu_customer1">
+            <End Role="cu_customer" EntitySet="cu_customer" />
+            <End Role="fpr_farmer_sells_product" EntitySet="fpr_farmer_sells_product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_f_farmer_has_pr_product_f_farmer1" Association="Self.fk_f_farmer_has_pr_product_f_farmer1">
+            <End Role="f_farmer" EntitySet="f_farmer" />
+            <End Role="fpr_farmer_sells_product" EntitySet="fpr_farmer_sells_product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_p_property_f_farmer1" Association="Self.fk_p_property_f_farmer1">
+            <End Role="f_farmer" EntitySet="f_farmer" />
+            <End Role="p_property" EntitySet="p_property" />
+          </AssociationSet>
+          <AssociationSet Name="fk_f_farmer_has_pr_product_pr_product1" Association="Self.fk_f_farmer_has_pr_product_pr_product1">
+            <End Role="pr_product" EntitySet="pr_product" />
+            <End Role="fpr_farmer_sells_product" EntitySet="fpr_farmer_sells_product" />
+          </AssociationSet>
+          <AssociationSet Name="cf_farmer_has_corn" Association="Self.cf_farmer_has_corn">
+            <End Role="c_corn" EntitySet="c_corn" />
+            <End Role="f_farmer" EntitySet="f_farmer" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FMSModelStoreContainer" CdmEntityContainer="FMSentities">
+          <EntitySetMapping Name="a_animal">
+            <EntityTypeMapping TypeName="FMSModel.a_animal">
+              <MappingFragment StoreEntitySet="a_animal">
+                <ScalarProperty Name="a_id" ColumnName="a_id" />
+                <ScalarProperty Name="a_animal1" ColumnName="a_animal" />
+                <ScalarProperty Name="a_age" ColumnName="a_age" />
+                <ScalarProperty Name="a_weight" ColumnName="a_weight" />
+                <ScalarProperty Name="a_classification" ColumnName="a_classification" />
+                <ScalarProperty Name="f_farmer_f_id" ColumnName="f_farmer_f_id" />
+                <ScalarProperty Name="a_pr_product" ColumnName="a_pr_product" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="c_corn">
+            <EntityTypeMapping TypeName="FMSModel.c_corn">
+              <MappingFragment StoreEntitySet="c_corn">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_type" ColumnName="c_type" />
+                <ScalarProperty Name="c_class" ColumnName="c_class" />
+                <ScalarProperty Name="c_dour" ColumnName="c_dour" />
+                <ScalarProperty Name="c_pr_product" ColumnName="c_pr_product" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cu_customer">
+            <EntityTypeMapping TypeName="FMSModel.cu_customer">
+              <MappingFragment StoreEntitySet="cu_customer">
+                <ScalarProperty Name="cu_id" ColumnName="cu_id" />
+                <ScalarProperty Name="cu_lastname" ColumnName="cu_lastname" />
+                <ScalarProperty Name="cu_firstname" ColumnName="cu_firstname" />
+                <ScalarProperty Name="cu_address" ColumnName="cu_address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="f_farmer">
+            <EntityTypeMapping TypeName="FMSModel.f_farmer">
+              <MappingFragment StoreEntitySet="f_farmer">
+                <ScalarProperty Name="f_id" ColumnName="f_id" />
+                <ScalarProperty Name="f_firstname" ColumnName="f_firstname" />
+                <ScalarProperty Name="f_lastname" ColumnName="f_lastname" />
+                <ScalarProperty Name="f_address" ColumnName="f_address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fpr_farmer_sells_product">
+            <EntityTypeMapping TypeName="FMSModel.fpr_farmer_sells_product">
+              <MappingFragment StoreEntitySet="fpr_farmer_sells_product">
+                <ScalarProperty Name="fpr_f_farmer" ColumnName="fpr_f_farmer" />
+                <ScalarProperty Name="fpr_pr_product" ColumnName="fpr_pr_product" />
+                <ScalarProperty Name="fpr_price" ColumnName="fpr_price" />
+                <ScalarProperty Name="cu_customer_cu_id" ColumnName="cu_customer_cu_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="p_property">
+            <EntityTypeMapping TypeName="FMSModel.p_property">
+              <MappingFragment StoreEntitySet="p_property">
+                <ScalarProperty Name="p_id" ColumnName="p_id" />
+                <ScalarProperty Name="p_name" ColumnName="p_name" />
+                <ScalarProperty Name="p_description" ColumnName="p_description" />
+                <ScalarProperty Name="p_f_farmer" ColumnName="p_f_farmer" />
+                <ScalarProperty Name="p_area" ColumnName="p_area" />
+                <ScalarProperty Name="p_c_corn" ColumnName="p_c_corn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pr_product">
+            <EntityTypeMapping TypeName="FMSModel.pr_product">
+              <MappingFragment StoreEntitySet="pr_product">
+                <ScalarProperty Name="pr_id" ColumnName="pr_id" />
+                <ScalarProperty Name="pr_type" ColumnName="pr_type" />
+                <ScalarProperty Name="pr_class" ColumnName="pr_class" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="cf_farmer_has_corn" TypeName="FMSModel.cf_farmer_has_corn" StoreEntitySet="cf_farmer_has_corn">
+            <EndProperty Name="c_corn">
+              <ScalarProperty Name="c_id" ColumnName="cf_c_corn" />
+            </EndProperty>
+            <EndProperty Name="f_farmer">
+              <ScalarProperty Name="f_id" ColumnName="cf_f_farmer" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
