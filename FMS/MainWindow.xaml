@@ -16,7 +16,7 @@
             </Menu>-->
         <TabControl TabStripPlacement="Top">
             <TabItem Header="Farmers">
-                
+                <Grid>
                    <!-- <TextBlock Text="jrqeio"/>-->
                 <ListBox x:Name="farmer">
                     <ListBox.ItemTemplate>
@@ -29,7 +29,7 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-               
+                </Grid>
             </TabItem>
             <TabItem Header="Animals">
 adfkljdfka
