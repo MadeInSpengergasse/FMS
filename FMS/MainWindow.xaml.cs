@@ -26,15 +26,21 @@ namespace FMS
         public MainWindow()
         {
             InitializeComponent();
+
             var f = db.f_farmer;
             f.Load();
-            var asd = f.Local;
-            farmer.ItemsSource = f.Local;
+            farmers.ItemsSource = f.Local;
+            var a = db.a_animal;
+            a.Load();
+            animals.ItemsSource = a.Local;
+            var p = db.p_property;
+            p.Load();
+            properties.ItemsSource = p.Local;
+            var c = db.c_corn;
+            c.Load();
+            corns.ItemsSource = c.Local;
         }
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
 
-        }
         private void Farmer_Click(object sender, RoutedEventArgs e)
         {
             content1.Children.Clear();

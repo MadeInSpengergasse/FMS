@@ -16,9 +16,7 @@
             </Menu>-->
         <TabControl TabStripPlacement="Top">
             <TabItem Header="Farmers">
-                
-                   <!-- <TextBlock Text="jrqeio"/>-->
-                <ListBox x:Name="farmer">
+                <ListBox x:Name="farmers">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -29,16 +27,48 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-               
             </TabItem>
+            
             <TabItem Header="Animals">
-adfkljdfka
+                <ListBox x:Name="animals">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=a_species}" />
+                                <TextBlock Text=", " />
+                                <TextBlock Text="{Binding Path=a_age}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </TabItem>
+            
             <TabItem Header="Properties">
-ljfalefj
+                <ListBox x:Name="properties">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=p_name}" />
+                                <TextBlock Text=", " />
+                                <TextBlock Text="{Binding Path=p_area}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </TabItem>
+            
             <TabItem Header="Corns">
-aerlkfjl
+                <ListBox x:Name="corns">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=c_type}" />
+                                <TextBlock Text=", " />
+                                <TextBlock Text="{Binding Path=c_class}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </TabItem>
         </TabControl>
             <Grid x:Name="content1"/>
