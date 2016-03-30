@@ -67,33 +67,33 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="a_animal.cs">
-      <DependentUpon>FMS_Model.tt</DependentUpon>
+      <DependentUpon>FMSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="cu_customer.cs">
-      <DependentUpon>FMS_Model.tt</DependentUpon>
+      <DependentUpon>FMSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="c_corn.cs">
-      <DependentUpon>FMS_Model.tt</DependentUpon>
+      <DependentUpon>FMSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Farmer.xaml.cs">
       <DependentUpon>Farmer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FMS_Model.cs">
+    <Compile Include="FMSModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FMS_Model.tt</DependentUpon>
+      <DependentUpon>FMSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="fpr_farmer_sells_product.cs">
-      <DependentUpon>FMS_Model.tt</DependentUpon>
+      <DependentUpon>FMSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="f_farmer.cs">
-      <DependentUpon>FMS_Model.tt</DependentUpon>
+      <DependentUpon>FMSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="pr_product.cs">
-      <DependentUpon>FMS_Model.tt</DependentUpon>
+      <DependentUpon>FMSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="p_property.cs">
-      <DependentUpon>FMS_Model.tt</DependentUpon>
+      <DependentUpon>FMSModel.tt</DependentUpon>
     </Compile>
     <Page Include="Farmer.xaml">
       <SubType>Designer</SubType>
@@ -107,15 +107,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="FMS_Model.Context.cs">
+    <Compile Include="FMSModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FMS_Model.Context.tt</DependentUpon>
+      <DependentUpon>FMSModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="FMS_Model.Designer.cs">
+    <Compile Include="FMSModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FMS_Model.edmx</DependentUpon>
+      <DependentUpon>FMSModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -140,12 +140,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="FMS_Model.edmx">
+    <EntityDeploy Include="FMSModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FMS_Model.Designer.cs</LastGenOutput>
+      <LastGenOutput>FMSModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="FMS_Model.edmx.diagram">
-      <DependentUpon>FMS_Model.edmx</DependentUpon>
+    <None Include="FMSModel.edmx.diagram">
+      <DependentUpon>FMSModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -158,19 +158,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FMS_Model.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FMS_Model.edmx</DependentUpon>
-      <LastGenOutput>FMS_Model.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="FMS_Model.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FMS_Model.edmx</DependentUpon>
-      <LastGenOutput>FMS_Model.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="FMSModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FMSModel.edmx</DependentUpon>
+      <LastGenOutput>FMSModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="FMSModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FMSModel.edmx</DependentUpon>
+      <LastGenOutput>FMSModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

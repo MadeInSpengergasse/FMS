@@ -6,15 +6,42 @@
         xmlns:local="clr-namespace:FMS"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    
-        <DockPanel>
-            <Menu DockPanel.Dock="Top">
+
+    <Grid>
+        <!--<Menu DockPanel.Dock="Top">
                 <MenuItem Header="Farmers" Click="Farmer_Click" />
                 <MenuItem Header="Animals" Click="Animal_Click" />
                 <MenuItem Header="Properties" Click="Property_Click" />
                 <MenuItem Header="Corns" Click="Corn_Click" />
-            </Menu>
+            </Menu>-->
+        <TabControl TabStripPlacement="Top">
+            <TabItem Header="Farmers">
+                <Grid>
+                   <!-- <TextBlock Text="jrqeio"/>-->
+                <ListBox x:Name="farmer">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=f_lastname}" />
+                                <TextBlock Text=", " />
+                                <TextBlock Text="{Binding Path=f_firstname}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Animals">
+adfkljdfka
+            </TabItem>
+            <TabItem Header="Properties">
+ljfalefj
+            </TabItem>
+            <TabItem Header="Corns">
+aerlkfjl
+            </TabItem>
+        </TabControl>
             <Grid x:Name="content1"/>
-        </DockPanel>
+        </Grid>
     
 </Window>
