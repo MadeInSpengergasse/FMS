@@ -43,8 +43,8 @@ namespace FMS
 
         private void Farmer_Click(object sender, RoutedEventArgs e)
         {
-            content1.Children.Clear();
-            content1.Children.Add(new Farmer());
+            //content1.Children.Clear();
+            //content1.Children.Add(new Farmer());
         }
 
         private void Animal_Click(object sender, RoutedEventArgs e)
