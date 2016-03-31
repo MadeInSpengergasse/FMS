@@ -75,8 +75,8 @@
     <Compile Include="c_corn.cs">
       <DependentUpon>FMSModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Farmer.xaml.cs">
-      <DependentUpon>Farmer.xaml</DependentUpon>
+    <Compile Include="Farmer_add.xaml.cs">
+      <DependentUpon>Farmer_add.xaml</DependentUpon>
     </Compile>
     <Compile Include="FMSModel.cs">
       <AutoGen>True</AutoGen>
@@ -95,10 +95,6 @@
     <Compile Include="p_property.cs">
       <DependentUpon>FMSModel.tt</DependentUpon>
     </Compile>
-    <Page Include="Farmer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -121,6 +117,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Farmer_add.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

@@ -9,8 +9,8 @@
           <Key>
             <PropertyRef Name="a_id" />
           </Key>
-          <Property Name="a_id" Type="int" Nullable="false" />
-          <Property Name="a_species" Type="text" />
+          <Property Name="a_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="a_animal" Type="text" />
           <Property Name="a_age" Type="real" Nullable="false" />
           <Property Name="a_weight" Type="real" Nullable="false" />
           <Property Name="a_classification" Type="int" Nullable="false" />
@@ -21,7 +21,7 @@
           <Key>
             <PropertyRef Name="c_id" />
           </Key>
-          <Property Name="c_id" Type="int" Nullable="false" />
+          <Property Name="c_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="c_type" Type="text" Nullable="false" />
           <Property Name="c_class" Type="int" />
           <Property Name="c_dour" Type="int" Nullable="false" />
@@ -39,7 +39,7 @@
           <Key>
             <PropertyRef Name="cu_id" />
           </Key>
-          <Property Name="cu_id" Type="int" Nullable="false" />
+          <Property Name="cu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cu_lastname" Type="text" Nullable="false" />
           <Property Name="cu_firstname" Type="text" Nullable="false" />
           <Property Name="cu_address" Type="text" />
@@ -48,7 +48,7 @@
           <Key>
             <PropertyRef Name="f_id" />
           </Key>
-          <Property Name="f_id" Type="int" Nullable="false" />
+          <Property Name="f_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="f_firstname" Type="text" Nullable="false" />
           <Property Name="f_lastname" Type="text" Nullable="false" />
           <Property Name="f_address" Type="text" Nullable="false" />
@@ -67,7 +67,7 @@
           <Key>
             <PropertyRef Name="p_id" />
           </Key>
-          <Property Name="p_id" Type="int" Nullable="false" />
+          <Property Name="p_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="p_name" Type="text" Nullable="false" />
           <Property Name="p_description" Type="text" />
           <Property Name="p_f_farmer" Type="int" Nullable="false" />
@@ -78,7 +78,7 @@
           <Key>
             <PropertyRef Name="pr_id" />
           </Key>
-          <Property Name="pr_id" Type="int" Nullable="false" />
+          <Property Name="pr_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="pr_type" Type="text" Nullable="false" />
           <Property Name="pr_class" Type="int" />
         </EntityType>
@@ -261,8 +261,8 @@
           <Key>
             <PropertyRef Name="a_id" />
           </Key>
-          <Property Name="a_id" Type="Int32" Nullable="false" />
-          <Property Name="a_species" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="a_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="a_animal1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="a_age" Type="Single" Nullable="false" />
           <Property Name="a_weight" Type="Single" Nullable="false" />
           <Property Name="a_classification" Type="Int32" Nullable="false" />
@@ -275,7 +275,7 @@
           <Key>
             <PropertyRef Name="c_id" />
           </Key>
-          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <Property Name="c_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="c_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="c_class" Type="Int32" />
           <Property Name="c_dour" Type="Int32" Nullable="false" />
@@ -288,7 +288,7 @@
           <Key>
             <PropertyRef Name="cu_id" />
           </Key>
-          <Property Name="cu_id" Type="Int32" Nullable="false" />
+          <Property Name="cu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cu_lastname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="cu_firstname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="cu_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -298,7 +298,7 @@
           <Key>
             <PropertyRef Name="f_id" />
           </Key>
-          <Property Name="f_id" Type="Int32" Nullable="false" />
+          <Property Name="f_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="f_firstname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="f_lastname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="f_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
@@ -324,7 +324,7 @@
           <Key>
             <PropertyRef Name="p_id" />
           </Key>
-          <Property Name="p_id" Type="Int32" Nullable="false" />
+          <Property Name="p_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="p_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="p_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="p_f_farmer" Type="Int32" Nullable="false" />
@@ -337,7 +337,7 @@
           <Key>
             <PropertyRef Name="pr_id" />
           </Key>
-          <Property Name="pr_id" Type="Int32" Nullable="false" />
+          <Property Name="pr_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="pr_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="pr_class" Type="Int32" />
           <NavigationProperty Name="a_animal" Relationship="Self.fk_a_animal_pr_product1" FromRole="pr_product" ToRole="a_animal" />
@@ -499,7 +499,7 @@
             <EntityTypeMapping TypeName="FMSModel.a_animal">
               <MappingFragment StoreEntitySet="a_animal">
                 <ScalarProperty Name="a_id" ColumnName="a_id" />
-                <ScalarProperty Name="a_species" ColumnName="a_species" />
+                <ScalarProperty Name="a_animal1" ColumnName="a_animal" />
                 <ScalarProperty Name="a_age" ColumnName="a_age" />
                 <ScalarProperty Name="a_weight" ColumnName="a_weight" />
                 <ScalarProperty Name="a_classification" ColumnName="a_classification" />
@@ -592,7 +592,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
