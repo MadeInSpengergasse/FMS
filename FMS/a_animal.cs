@@ -15,7 +15,7 @@ namespace FMS
     public partial class a_animal
     {
         public int a_id { get; set; }
-        public string a_species { get; set; }
+        public string a_animal1 { get; set; }
         public float a_age { get; set; }
         public float a_weight { get; set; }
         public int a_classification { get; set; }

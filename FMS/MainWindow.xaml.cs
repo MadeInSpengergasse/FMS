@@ -21,10 +21,12 @@ namespace FMS
     /// </summary>
     public partial class MainWindow : Window
     {
-        FMSentities db = new FMSentities();
+       public FMSentities db = new FMSentities();
         
         public MainWindow()
         {
+            Application.Current.Properties.Add("db", db);
+
             InitializeComponent();
 
             var f = db.f_farmer;
@@ -58,6 +60,22 @@ namespace FMS
         }
 
         private void Corn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void F_add_Click(object sender, RoutedEventArgs e)
+        {
+            var fa = new Farmer_add();
+            fa.ShowDialog();
+        }
+
+        private void F_edit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void F_delete_Click(object sender, RoutedEventArgs e)
         {
 
         }
