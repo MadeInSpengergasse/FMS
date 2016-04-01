@@ -77,7 +77,8 @@ namespace FMS
 
         private void F_delete_Click(object sender, RoutedEventArgs e)
         {
-
+            db.f_farmer.Remove(farmers.SelectedItem as f_farmer);
+            db.SaveChanges();
         }
     }
 }
