@@ -13,7 +13,10 @@
                 <MenuItem Header="Properties" Click="Property_Click" />
                 <MenuItem Header="Corns" Click="Corn_Click" />
             </Menu>-->
-    <Grid>
+    <Window.Resources>
+        <ObjectDataProvider x:Key="viewmodel" ObjectType="{x:Type local:ViewModel}" />
+    </Window.Resources>
+    <Grid DataContext="{Binding Source={StaticResource viewmodel}}">
         <TabControl TabStripPlacement="Top">
             <TabItem Header="Farmers">
                 <Grid>
@@ -21,13 +24,13 @@
                         <ColumnDefinition Width="5*"/>
                         <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
-                    <ListBox x:Name="farmers" Grid.Column="0">
+                    <ListBox x:Name="farmers" Grid.Column="0" ItemsSource="{Binding  Path=AllFarmers}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Path=f_lastname}" />
+                                    <TextBlock Text="{Binding Path=f_lastname, UpdateSourceTrigger=PropertyChanged}" />
                                     <TextBlock Text=", " />
-                                    <TextBlock Text="{Binding Path=f_firstname}" />
+                                    <TextBlock Text="{Binding Path=f_firstname, UpdateSourceTrigger=PropertyChanged}" />
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
@@ -41,45 +44,78 @@
             </TabItem>
             
             <TabItem Header="Animals">
-                <ListBox x:Name="animals">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Path=a_species}" />
-                                <TextBlock Text=", " />
-                                <TextBlock Text="{Binding Path=a_age}" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="animals" Grid.Column="0" ItemsSource="{Binding AllAnimals}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=a_species, UpdateSourceTrigger=PropertyChanged}" />
+                                    <TextBlock Text=", " />
+                                    <TextBlock Text="{Binding Path=a_age, UpdateSourceTrigger=PropertyChanged}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <StackPanel Grid.Column="1">
+                        <Button x:Name="A_add"  Click="A_add_Click" Content="Add" Margin="0 0 0 15"/>
+                        <Button x:Name="A_edit" Click="A_edit_Click" Content="Edit" Margin="0 0 0 15"/>
+                        <Button x:Name="A_delete" Click="A_delete_Click" Content="Delete" Margin="0 0 0 5" />
+                    </StackPanel>
+                </Grid>
             </TabItem>
             
             <TabItem Header="Properties">
-                <ListBox x:Name="properties">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Path=p_name}" />
-                                <TextBlock Text=", " />
-                                <TextBlock Text="{Binding Path=p_area}" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="properties" Grid.Column="0" ItemsSource="{Binding Path=AllProperties}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=p_name, UpdateSourceTrigger=PropertyChanged}" />
+                                    <TextBlock Text=", " />
+                                    <TextBlock Text="{Binding Path=p_area, UpdateSourceTrigger=PropertyChanged}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <StackPanel Grid.Column="1">
+                        <Button x:Name="P_add"  Click="P_add_Click" Content="Add" Margin="0 0 0 15"/>
+                        <Button x:Name="P_edit" Click="P_edit_Click" Content="Edit" Margin="0 0 0 15"/>
+                        <Button x:Name="P_delete" Click="P_delete_Click" Content="Delete" Margin="0 0 0 5" />
+                    </StackPanel>
+                </Grid>
             </TabItem>
             
             <TabItem Header="Corns">
-                <ListBox x:Name="corns">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Path=c_type}" />
-                                <TextBlock Text=", " />
-                                <TextBlock Text="{Binding Path=c_class}" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="corns" Grid.Column="0" ItemsSource="{Binding Path=AllCorns}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=c_type, UpdateSourceTrigger=PropertyChanged}" />
+                                    <TextBlock Text=", " />
+                                    <TextBlock Text="{Binding Path=c_class, UpdateSourceTrigger=PropertyChanged}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <StackPanel Grid.Column="1">
+                        <Button x:Name="C_add"  Click="C_add_Click" Content="Add" Margin="0 0 0 15"/>
+                        <Button x:Name="C_edit" Click="C_edit_Click" Content="Edit" Margin="0 0 0 15"/>
+                        <Button x:Name="C_delete" Click="C_delete_Click" Content="Delete" Margin="0 0 0 5" />
+                    </StackPanel>
+                </Grid>
             </TabItem>
         </TabControl>
         </Grid>

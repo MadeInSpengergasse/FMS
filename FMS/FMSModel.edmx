@@ -10,7 +10,7 @@
             <PropertyRef Name="a_id" />
           </Key>
           <Property Name="a_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="a_animal" Type="text" />
+          <Property Name="a_species" Type="text" />
           <Property Name="a_age" Type="real" Nullable="false" />
           <Property Name="a_weight" Type="real" Nullable="false" />
           <Property Name="a_classification" Type="int" Nullable="false" />
@@ -262,7 +262,7 @@
             <PropertyRef Name="a_id" />
           </Key>
           <Property Name="a_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="a_animal1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="a_species" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="a_age" Type="Single" Nullable="false" />
           <Property Name="a_weight" Type="Single" Nullable="false" />
           <Property Name="a_classification" Type="Int32" Nullable="false" />
@@ -499,7 +499,7 @@
             <EntityTypeMapping TypeName="FMSModel.a_animal">
               <MappingFragment StoreEntitySet="a_animal">
                 <ScalarProperty Name="a_id" ColumnName="a_id" />
-                <ScalarProperty Name="a_animal1" ColumnName="a_animal" />
+                <ScalarProperty Name="a_species" ColumnName="a_species" />
                 <ScalarProperty Name="a_age" ColumnName="a_age" />
                 <ScalarProperty Name="a_weight" ColumnName="a_weight" />
                 <ScalarProperty Name="a_classification" ColumnName="a_classification" />
