@@ -22,18 +22,11 @@ namespace FMS
     public partial class MainWindow : Window
     {
        public FMSentities db = new FMSentities();
-       
 
         public MainWindow()
         {
             Application.Current.Properties.Add("db", db);
-         
-
             InitializeComponent();
-            
-           
-           
-
         }
 
 
@@ -57,15 +50,14 @@ namespace FMS
                 fa.ShowDialog();
                 var f = db.f_farmer;
                 f.Load();
-                farmers.ItemsSource = null;
+                farmers.ItemsSource = null; // is this neccesary?
                 farmers.ItemsSource = f.Local;
-                
-                
             }
         }
 
         private void F_delete_Click(object sender, RoutedEventArgs e)
         {
+            var test = farmers.SelectedItem as f_farmer;
             db.f_farmer.Remove(farmers.SelectedItem as f_farmer);
             db.SaveChanges();
         }
@@ -90,10 +82,8 @@ namespace FMS
                 an.ShowDialog();
                 var a = db.a_animal;
                 a.Load();
-                animals.ItemsSource = null;
+                animals.ItemsSource = null; // is this neccesary?
                 animals.ItemsSource = a.Local;
-
-
             }
         }
 
@@ -115,7 +105,8 @@ namespace FMS
 
         private void P_delete_Click(object sender, RoutedEventArgs e)
         {
-
+            db.p_property.Remove(properties.SelectedItem as p_property);
+            db.SaveChanges();
         }
 
         private void C_add_Click(object sender, RoutedEventArgs e)
@@ -130,7 +121,8 @@ namespace FMS
 
         private void C_delete_Click(object sender, RoutedEventArgs e)
         {
-
+            db.c_corn.Remove(corns.SelectedItem as c_corn);
+            db.SaveChanges();
         }
     }
 }

@@ -24,7 +24,7 @@ namespace FMS
         public Animal_add()
         {
             InitializeComponent();
-            db=Application.Current.Properties["db"] as FMSentities;
+            db = Application.Current.Properties["db"] as FMSentities;
             
         }
 
@@ -36,7 +36,6 @@ namespace FMS
             int classification;
             int farmer;
             int product;
-
 
             bool bage = Int32.TryParse(tf_age.Text, out age);
             bool bweight = float.TryParse(tf_weight.Text, out weight);
@@ -50,22 +49,20 @@ namespace FMS
             }
             if (db.pr_product.Find(product) == null)
             {
-                MessageBox.Show("Invalid  product", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Invalid product", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (db.f_farmer.Find(farmer) == null)
             {
-                MessageBox.Show("Invalid  farmer", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Invalid farmer", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (tf_species.Text == "" || !bage || !bweight || !bclassifcation || !bfarmer ) 
             {
                 MessageBox.Show("Invalid ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-
             }
             else
             {
- 
                 an.a_species = tf_species.Text;
                 an.a_age = age;
                 an.a_weight = weight;
@@ -77,8 +74,6 @@ namespace FMS
                 db.SaveChanges();
                 this.Close();
             }
-
-
         }
     }
 }

@@ -66,8 +66,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Animal_add .xaml.cs">
-      <DependentUpon>Animal_add .xaml</DependentUpon>
+    <Compile Include="Animal_add.xaml.cs">
+      <DependentUpon>Animal_add.xaml</DependentUpon>
     </Compile>
     <Compile Include="a_animal.cs">
       <DependentUpon>FMSModel.tt</DependentUpon>
@@ -115,7 +115,7 @@
       <DependentUpon>FMSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel.cs" />
-    <Page Include="Animal_add .xaml">
+    <Page Include="Animal_add.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
