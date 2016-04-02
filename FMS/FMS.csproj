@@ -66,6 +66,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Animal_add .xaml.cs">
+      <DependentUpon>Animal_add .xaml</DependentUpon>
+    </Compile>
     <Compile Include="a_animal.cs">
       <DependentUpon>FMSModel.tt</DependentUpon>
     </Compile>
@@ -78,10 +81,26 @@
     <Compile Include="Farmer_add.xaml.cs">
       <DependentUpon>Farmer_add.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Animal_edit.xaml.cs">
+      <DependentUpon>Animal_edit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Farmer_edit.xaml.cs">
+      <DependentUpon>Farmer_edit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FMSModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FMSModel.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="FMSModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FMSModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FMSModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="fpr_farmer_sells_product.cs">
       <DependentUpon>FMSModel.tt</DependentUpon>
@@ -95,6 +114,19 @@
     <Compile Include="p_property.cs">
       <DependentUpon>FMSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel.cs" />
+    <Page Include="Animal_add .xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Animal_edit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Farmer_edit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -102,16 +134,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="FMSModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FMSModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FMSModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FMSModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
