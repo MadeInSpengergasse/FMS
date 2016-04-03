@@ -11,8 +11,11 @@ namespace FMS
 {
     public class ViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         FMSentities dbglobal;
-        private ObservableCollection<f_farmer> OLFarmers;
+        private ObservableCollection<f_farmer> OLFarmers; // is this needed?
+
         public ViewModel ()
         {
             dbglobal = new FMSentities();
@@ -26,8 +29,6 @@ namespace FMS
                 f.Load();
                 return f.Local;
             }
-
-          
         }
         public IEnumerable<a_animal> AllAnimals
         {
@@ -37,8 +38,6 @@ namespace FMS
                 a.Load();
                 return a.Local;
             }
-
-
         }
 
         public IEnumerable<p_property> AllProperties
@@ -49,8 +48,6 @@ namespace FMS
                 p.Load();
                 return p.Local;
             }
-
-
         }
 
         public IEnumerable<c_corn> AllCorns
@@ -61,11 +58,6 @@ namespace FMS
                 c.Load();
                 return c.Local;
             }
-
-
         }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

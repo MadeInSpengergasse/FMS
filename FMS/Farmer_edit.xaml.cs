@@ -25,12 +25,10 @@ namespace FMS
         {
             InitializeComponent();
             db = Application.Current.Properties["db"] as FMSentities;
-             fa = Application.Current.Properties["selectedFarmer"] as f_farmer;
+            fa = Application.Current.Properties["selectedFarmer"] as f_farmer;
             tf_firstname.Text = fa.f_firstname;
             tf_lastname.Text = fa.f_lastname;
             tf_address.Text = fa.f_address;
-
-           
         }
 
         private void edit_Click(object sender, RoutedEventArgs e)
@@ -53,9 +51,6 @@ namespace FMS
                     db.SaveChanges();
                     this.Close();
                 }
-                
-
-                
             }
         }
 

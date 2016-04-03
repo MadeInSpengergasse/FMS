@@ -21,189 +21,147 @@ namespace FMS
     /// </summary>
     public partial class MainWindow : Window
     {
-       public FMSentities db = new FMSentities();
-
+        public FMSentities db = new FMSentities();
 
         public MainWindow()
         {
             Application.Current.Properties.Add("db", db);
 
-       
-
             InitializeComponent();
-            var f = db.f_farmer;
-            f.Load();
-            farmers.ItemsSource = f.Local;
-
-
-
         }
 
+        // ========== FARMERS ==========
 
         private void F_add_Click(object sender, RoutedEventArgs e)
         {
             var fa = new Farmer_add();
             fa.ShowDialog();
-            var f = db.f_farmer;
-            f.Load();
-            farmers.ItemsSource = null;
-            farmers.ItemsSource = f.Local;
         }
 
         private void F_edit_Click(object sender, RoutedEventArgs e)
         {
             if (farmers.SelectedItem == null)
             {
-
+                return;
             }
-            else
-            {
-                Application.Current.Properties.Add("selectedFarmer", farmers.SelectedItem);
-                var fa = new Farmer_edit();
-                
-                fa.ShowDialog();
-                var f = db.f_farmer;
-                f.Load();
-                farmers.ItemsSource = null;
-                farmers.ItemsSource = f.Local;
-                
-                
-            }
+            Application.Current.Properties.Add("selectedFarmer", farmers.SelectedItem);
+            var fa = new Farmer_edit();
+            fa.ShowDialog();
         }
-
- 
-
-
-
 
         private void F_delete_Click(object sender, RoutedEventArgs e)
         {
-            var test = farmers.SelectedItem as f_farmer;
-            int id = test.f_id;
+            var farmer = farmers.SelectedItem as f_farmer;
+            if (farmer == null)
+            {
+                return;
+            }
+            int id = farmer.f_id;
             var anim = from an in db.a_animal
-                          where an.f_farmer_f_id == id
-                          select an;
+                       where an.f_farmer_f_id == id
+                       select an;
 
             var prop = from p in db.p_property
-                              where p.p_f_farmer== id
-                              select p;
+                       where p.p_f_farmer == id
+                       select p;
 
             db.a_animal.RemoveRange(anim);
             db.p_property.RemoveRange(prop);
-            db.SaveChanges();
-            db.f_farmer.Remove(farmers.SelectedItem as f_farmer);
-            db.SaveChanges();
 
-            var a = db.a_animal;
-            a.Load();
-            animals.ItemsSource = null; // is this neccesary?
-            animals.ItemsSource = a.Local;
+            db.f_farmer.Remove(farmer);
+            db.SaveChanges();
         }
+
+        // ========== ANIMALS ==========
 
         private void A_add_Click(object sender, RoutedEventArgs e)
         {
             var fa = new Animal_add();
             fa.ShowDialog();
-            var a = db.a_animal;
-            a.Load();
-            animals.ItemsSource = null; // is this neccesary?
-            animals.ItemsSource = a.Local;
         }
 
         private void A_edit_Click(object sender, RoutedEventArgs e)
         {
-            if (animals.SelectedItem == null)
+            var animal = animals.SelectedItem;
+            if (animal == null)
             {
-
+                return;
             }
-            else
-            {
-                Application.Current.Properties.Add("selectedAnimal", animals.SelectedItem);
-                var an = new Animal_edit();
-
-                an.ShowDialog();
-                var a = db.a_animal;
-                a.Load();
-                animals.ItemsSource = null; // is this neccesary?
-                animals.ItemsSource = a.Local;
-            }
+            Application.Current.Properties.Add("selectedAnimal", animal);
+            var an = new Animal_edit();
+            an.ShowDialog();
         }
 
         private void A_delete_Click(object sender, RoutedEventArgs e)
         {
-            db.a_animal.Remove(animals.SelectedItem as a_animal);
+            var animal = animals.SelectedItem as a_animal;
+            if (animal == null)
+            {
+                return;
+            }
+            db.a_animal.Remove(animal);
             db.SaveChanges();
         }
+
+        // ========== PROPERTIES ==========
 
         private void P_add_Click(object sender, RoutedEventArgs e)
-
         {
-            db.f_farmer.Remove(farmers.SelectedItem as f_farmer);
-            db.SaveChanges();
+            var propadd = new Property_add();
+            propadd.ShowDialog();
         }
-
-
-
-
-
 
         private void P_edit_Click(object sender, RoutedEventArgs e)
         {
-            if (animals.SelectedItem == null)
+            var property = properties.SelectedItem;
+            if (property == null)
             {
-
+                return;
             }
-            else
-            {
-                Application.Current.Properties.Add("selectedAnimal", animals.SelectedItem);
-                var an = new Animal_edit();
-
-                an.ShowDialog();
-                var a = db.a_animal;
-                a.Load();
-                animals.ItemsSource = null;
-                animals.ItemsSource = a.Local;
-
-
-            }
+            Application.Current.Properties.Add("selectedProperty", property);
+            var propedit = new Property_edit();
+            propedit.ShowDialog();
         }
-
-
- 
-
-       
 
         private void P_delete_Click(object sender, RoutedEventArgs e)
         {
-            db.p_property.Remove(properties.SelectedItem as p_property);
+            var property = properties.SelectedItem as p_property;
+            if (property == null)
+            {
+                return;
+            }
+            db.p_property.Remove(property);
             db.SaveChanges();
         }
 
+        // ========== CORN ==========
+
         private void C_add_Click(object sender, RoutedEventArgs e)
-
         {
-
+            //var cornadd = new Corn_add();
+            //cornadd.ShowDialog();
         }
-
-
-  
-
- 
-
-
 
         private void C_edit_Click(object sender, RoutedEventArgs e)
         {
-
+            var corn = corns.SelectedItem as c_corn;
+            if (corn == null)
+            {
+                return;
+            }
+            Application.Current.Properties.Add("selectedCorn", corn);
+            //var cornedit = new Corn_edit();
+            //cornedit.ShowDialog();
         }
-
-       
-
- 
 
         private void C_delete_Click(object sender, RoutedEventArgs e)
         {
-            db.c_corn.Remove(corns.SelectedItem as c_corn);
+            var corn = corns.SelectedItem as c_corn;
+            if (corn == null)
+            {
+                return;
+            }
+            db.c_corn.Remove(corn);
             db.SaveChanges();
         }
     }

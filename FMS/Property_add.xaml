@@ -1,0 +1,42 @@
+﻿<Window x:Class="FMS.Property_add"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FMS"
+        mc:Ignorable="d"
+        Title="Add property" Height="200" Width="250">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+       
+        <TextBlock Grid.Column="0" Grid.Row="0" Text="Name" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBox x:Name="p_name" Grid.Column="1" Grid.Row="0" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        
+        <TextBlock Grid.Column="0" Grid.Row="1" Text="Description" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBox x:Name="p_description" Grid.Column="1" Grid.Row="1" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        
+        <TextBlock Grid.Column="0" Grid.Row="2" Text="Farmer" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBox x:Name="p_f_farmer" Grid.Column="1" Grid.Row="2" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+        <TextBlock Grid.Column="0" Grid.Row="3" Text="Area" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBox x:Name="p_area" Grid.Column="1" Grid.Row="3" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+        <TextBlock Grid.Column="0" Grid.Row="4" Text="Corn" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBox x:Name="p_c_corn" Grid.Column="1" Grid.Row="4" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+        <Button x:Name="add" Content="Add" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" Click="add_Click"/>
+    </Grid>
+</Window>
