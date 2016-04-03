@@ -19,7 +19,7 @@ namespace FMS
         public float a_age { get; set; }
         public float a_weight { get; set; }
         public int a_classification { get; set; }
-        public int f_farmer_f_id { get; set; }
+        public Nullable<int> f_farmer_f_id { get; set; }
         public Nullable<int> a_pr_product { get; set; }
     
         public virtual f_farmer f_farmer { get; set; }

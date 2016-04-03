@@ -14,7 +14,7 @@
           <Property Name="a_age" Type="real" Nullable="false" />
           <Property Name="a_weight" Type="real" Nullable="false" />
           <Property Name="a_classification" Type="int" Nullable="false" />
-          <Property Name="f_farmer_f_id" Type="int" Nullable="false" />
+          <Property Name="f_farmer_f_id" Type="int" />
           <Property Name="a_pr_product" Type="int" />
         </EntityType>
         <EntityType Name="c_corn">
@@ -83,7 +83,7 @@
           <Property Name="pr_class" Type="int" />
         </EntityType>
         <Association Name="fk_a_animal_f_farmer1">
-          <End Role="f_farmer" Type="Self.f_farmer" Multiplicity="1" />
+          <End Role="f_farmer" Type="Self.f_farmer" Multiplicity="0..1" />
           <End Role="a_animal" Type="Self.a_animal" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="f_farmer">
@@ -266,7 +266,7 @@
           <Property Name="a_age" Type="Single" Nullable="false" />
           <Property Name="a_weight" Type="Single" Nullable="false" />
           <Property Name="a_classification" Type="Int32" Nullable="false" />
-          <Property Name="f_farmer_f_id" Type="Int32" Nullable="false" />
+          <Property Name="f_farmer_f_id" Type="Int32" />
           <Property Name="a_pr_product" Type="Int32" />
           <NavigationProperty Name="f_farmer" Relationship="Self.fk_a_animal_f_farmer1" FromRole="a_animal" ToRole="f_farmer" />
           <NavigationProperty Name="pr_product" Relationship="Self.fk_a_animal_pr_product1" FromRole="a_animal" ToRole="pr_product" />
@@ -345,7 +345,7 @@
           <NavigationProperty Name="fpr_farmer_sells_product" Relationship="Self.fk_f_farmer_has_pr_product_pr_product1" FromRole="pr_product" ToRole="fpr_farmer_sells_product" />
         </EntityType>
         <Association Name="fk_a_animal_f_farmer1">
-          <End Role="f_farmer" Type="Self.f_farmer" Multiplicity="1" />
+          <End Role="f_farmer" Type="Self.f_farmer" Multiplicity="0..1" />
           <End Role="a_animal" Type="Self.a_animal" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="f_farmer">
