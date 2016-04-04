@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace FMS
 {
@@ -14,29 +17,25 @@ namespace FMS
         public event PropertyChangedEventHandler PropertyChanged;
 
         FMSentities dbglobal;
-        private ObservableCollection<f_farmer> OLFarmers; // is this needed?
 
-        public ViewModel ()
+        public ViewModel()
         {
             dbglobal = new FMSentities();
         }
-        
+
         public IEnumerable<f_farmer> AllFarmers
         {
             get
             {
-                var f = dbglobal.f_farmer;
-                f.Load();
-                return f.Local;
+                return dbglobal.f_farmer.ToList();
             }
         }
+
         public IEnumerable<a_animal> AllAnimals
         {
             get
             {
-                var a = dbglobal.a_animal;
-                a.Load();
-                return a.Local;
+                return dbglobal.a_animal.ToList();
             }
         }
 
@@ -44,9 +43,7 @@ namespace FMS
         {
             get
             {
-                var p = dbglobal.p_property;
-                p.Load();
-                return p.Local;
+                return dbglobal.p_property.ToList();
             }
         }
 
@@ -54,10 +51,13 @@ namespace FMS
         {
             get
             {
-                var c = dbglobal.c_corn;
-                c.Load();
-                return c.Local;
+                return dbglobal.c_corn.ToList();
             }
+        }
+
+        public void RaisePropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

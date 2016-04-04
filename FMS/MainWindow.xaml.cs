@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -23,11 +24,17 @@ namespace FMS
     {
         public FMSentities db = new FMSentities();
 
+        public ViewModel ViewModel;
+
         public MainWindow()
         {
             Application.Current.Properties.Add("db", db);
 
             InitializeComponent();
+
+            ObjectDataProvider odp = this.TryFindResource("viewmodel") as ObjectDataProvider;
+            odp.InitialLoad();
+            ViewModel = odp.Data as ViewModel;
         }
 
         // ========== FARMERS ==========
@@ -36,6 +43,8 @@ namespace FMS
         {
             var fa = new Farmer_add();
             fa.ShowDialog();
+
+            ViewModel.RaisePropertyChanged("AllFarmers");
         }
 
         private void F_edit_Click(object sender, RoutedEventArgs e)
@@ -47,6 +56,8 @@ namespace FMS
             Application.Current.Properties.Add("selectedFarmer", farmers.SelectedItem);
             var fa = new Farmer_edit();
             fa.ShowDialog();
+
+            ViewModel.RaisePropertyChanged("AllFarmers");
         }
 
         private void F_delete_Click(object sender, RoutedEventArgs e)
@@ -67,9 +78,14 @@ namespace FMS
 
             db.a_animal.RemoveRange(anim);
             db.p_property.RemoveRange(prop);
-
-            db.f_farmer.Remove(farmer);
+            var farmer_remove = (from x in db.f_farmer where x.f_id == farmer.f_id select x).First();
+            
+            db.f_farmer.Remove(farmer_remove);
             db.SaveChanges();
+
+            ViewModel.RaisePropertyChanged("AllFarmers");
+            ViewModel.RaisePropertyChanged("AllAnimals");
+            ViewModel.RaisePropertyChanged("AllProperties");
         }
 
         // ========== ANIMALS ==========
@@ -78,6 +94,8 @@ namespace FMS
         {
             var fa = new Animal_add();
             fa.ShowDialog();
+
+            ViewModel.RaisePropertyChanged("AllAnimals");
         }
 
         private void A_edit_Click(object sender, RoutedEventArgs e)
@@ -90,6 +108,8 @@ namespace FMS
             Application.Current.Properties.Add("selectedAnimal", animal);
             var an = new Animal_edit();
             an.ShowDialog();
+
+            ViewModel.RaisePropertyChanged("AllAnimals");
         }
 
         private void A_delete_Click(object sender, RoutedEventArgs e)
@@ -99,8 +119,11 @@ namespace FMS
             {
                 return;
             }
-            db.a_animal.Remove(animal);
+            var animal_remove = (from x in db.a_animal where x.a_id == animal.a_id select x).First();
+            db.a_animal.Remove(animal_remove);
             db.SaveChanges();
+
+            ViewModel.RaisePropertyChanged("AllAnimals");
         }
 
         // ========== PROPERTIES ==========
@@ -109,6 +132,8 @@ namespace FMS
         {
             var propadd = new Property_add();
             propadd.ShowDialog();
+
+            ViewModel.RaisePropertyChanged("AllProperties");
         }
 
         private void P_edit_Click(object sender, RoutedEventArgs e)
@@ -121,6 +146,8 @@ namespace FMS
             Application.Current.Properties.Add("selectedProperty", property);
             var propedit = new Property_edit();
             propedit.ShowDialog();
+
+            ViewModel.RaisePropertyChanged("AllProperties");
         }
 
         private void P_delete_Click(object sender, RoutedEventArgs e)
@@ -130,8 +157,11 @@ namespace FMS
             {
                 return;
             }
-            db.p_property.Remove(property);
+            var property_remove = (from x in db.p_property where x.p_id == property.p_id select x).First();
+            db.p_property.Remove(property_remove);
             db.SaveChanges();
+
+            ViewModel.RaisePropertyChanged("AllProperties");
         }
 
         // ========== CORN ==========
@@ -140,6 +170,8 @@ namespace FMS
         {
             //var cornadd = new Corn_add();
             //cornadd.ShowDialog();
+
+            ViewModel.RaisePropertyChanged("AllCorns");
         }
 
         private void C_edit_Click(object sender, RoutedEventArgs e)
@@ -152,6 +184,8 @@ namespace FMS
             Application.Current.Properties.Add("selectedCorn", corn);
             //var cornedit = new Corn_edit();
             //cornedit.ShowDialog();
+
+            ViewModel.RaisePropertyChanged("AllCorns");
         }
 
         private void C_delete_Click(object sender, RoutedEventArgs e)
@@ -161,8 +195,11 @@ namespace FMS
             {
                 return;
             }
-            db.c_corn.Remove(corn);
+            var corn_remove = (from x in db.c_corn where x.c_id == corn.c_id select x).First();
+            db.c_corn.Remove(corn_remove);
             db.SaveChanges();
+
+            ViewModel.RaisePropertyChanged("AllCorns");
         }
     }
 }
