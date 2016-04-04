@@ -5,14 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FMS"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Farm-Management-Software" Height="350" Width="525">
 
-        <!--<Menu DockPanel.Dock="Top">
-                <MenuItem Header="Farmers" Click="Farmer_Click" />
-                <MenuItem Header="Animals" Click="Animal_Click" />
-                <MenuItem Header="Properties" Click="Property_Click" />
-                <MenuItem Header="Corns" Click="Corn_Click" />
-            </Menu>-->
    <Window.Resources>
         <ObjectDataProvider x:Key="viewmodel" ObjectType="{x:Type local:ViewModel}" />
     </Window.Resources>
@@ -24,7 +18,7 @@
                         <ColumnDefinition Width="5*"/>
                         <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
-                    <ListBox x:Name="farmers" Grid.Column="0" ItemsSource="{Binding  Path=AllFarmers}">
+                    <ListBox x:Name="farmers" Grid.Column="0" ItemsSource="{Binding Path=AllFarmers}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
