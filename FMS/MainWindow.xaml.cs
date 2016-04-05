@@ -168,8 +168,8 @@ namespace FMS
 
         private void C_add_Click(object sender, RoutedEventArgs e)
         {
-            //var cornadd = new Corn_add();
-            //cornadd.ShowDialog();
+            var cornadd = new Corn_add();
+            cornadd.ShowDialog();
 
             ViewModel.RaisePropertyChanged("AllCorns");
         }
@@ -182,8 +182,8 @@ namespace FMS
                 return;
             }
             Application.Current.Properties.Add("selectedCorn", corn);
-            //var cornedit = new Corn_edit();
-            //cornedit.ShowDialog();
+            var cornedit = new Corn_edit();
+            cornedit.ShowDialog();
 
             ViewModel.RaisePropertyChanged("AllCorns");
         }

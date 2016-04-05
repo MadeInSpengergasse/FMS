@@ -72,6 +72,12 @@
     <Compile Include="Animal_add.xaml.cs">
       <DependentUpon>Animal_add.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Corn_add.xaml.cs">
+      <DependentUpon>Corn_add.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Corn_edit.xaml.cs">
+      <DependentUpon>Corn_edit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Property_edit.xaml.cs">
       <DependentUpon>Property_edit.xaml</DependentUpon>
     </Compile>
@@ -125,6 +131,14 @@
     </Compile>
     <Compile Include="ViewModel.cs" />
     <Page Include="Animal_add.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Corn_add.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Corn_edit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
