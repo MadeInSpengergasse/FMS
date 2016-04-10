@@ -1,0 +1,43 @@
+﻿<Window x:Class="FMS.Animal_info"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FMS"
+        mc:Ignorable="d"
+        Title="Farmer info" Height="300" Width="300"
+        Closing="Window_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Column="0" Grid.Row="0" Text="Species" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock x:Name="a_species" Grid.Column="1" Grid.Row="0" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+        <TextBlock Grid.Column="0" Grid.Row="1" Text="Age" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock x:Name="a_age" Grid.Column="1" Grid.Row="1" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+        <TextBlock Grid.Column="0" Grid.Row="2" Text="Weight" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock x:Name="a_weight" Grid.Column="1" Grid.Row="2" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+        <TextBlock Grid.Column="0" Grid.Row="3" Text="Classification" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock x:Name="a_classification" Grid.Column="1" Grid.Row="3" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        
+        <TextBlock Grid.Column="0" Grid.Row="4" Text="Farmer" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock x:Name="f_farmer_f_id" Grid.Column="1" Grid.Row="4" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        
+        <TextBlock Grid.Column="0" Grid.Row="5" Text="Product" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock x:Name="a_pr_product" Grid.Column="1" Grid.Row="5" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+    </Grid>
+</Window>

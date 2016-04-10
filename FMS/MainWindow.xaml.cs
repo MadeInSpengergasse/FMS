@@ -79,7 +79,7 @@ namespace FMS
             db.a_animal.RemoveRange(anim);
             db.p_property.RemoveRange(prop);
             var farmer_remove = (from x in db.f_farmer where x.f_id == farmer.f_id select x).First();
-            
+
             db.f_farmer.Remove(farmer_remove);
             db.SaveChanges();
 
@@ -168,8 +168,8 @@ namespace FMS
 
         private void C_add_Click(object sender, RoutedEventArgs e)
         {
-            //var cornadd = new Corn_add();
-            //cornadd.ShowDialog();
+            var cornadd = new Corn_add();
+            cornadd.ShowDialog();
 
             ViewModel.RaisePropertyChanged("AllCorns");
         }
@@ -182,8 +182,8 @@ namespace FMS
                 return;
             }
             Application.Current.Properties.Add("selectedCorn", corn);
-            //var cornedit = new Corn_edit();
-            //cornedit.ShowDialog();
+            var cornedit = new Corn_edit();
+            cornedit.ShowDialog();
 
             ViewModel.RaisePropertyChanged("AllCorns");
         }
@@ -200,6 +200,38 @@ namespace FMS
             db.SaveChanges();
 
             ViewModel.RaisePropertyChanged("AllCorns");
+        }
+
+        private void Farmers_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var item = ((FrameworkElement)e.OriginalSource).DataContext as f_farmer;
+            if (item == null) return;
+            Application.Current.Properties.Add("clickedFarmer", item);
+            new Farmer_info().ShowDialog();
+        }
+
+        private void Animals_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var item = ((FrameworkElement)e.OriginalSource).DataContext as a_animal;
+            if (item == null) return;
+            Application.Current.Properties.Add("clickedAnimal", item);
+            new Animal_info().ShowDialog();
+        }
+
+        private void Properties_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var item = ((FrameworkElement)e.OriginalSource).DataContext as p_property;
+            if (item == null) return;
+            Application.Current.Properties.Add("clickedProperty", item);
+            new Property_info().ShowDialog();
+        }
+
+        private void Corns_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var item = ((FrameworkElement)e.OriginalSource).DataContext as c_corn;
+            if (item == null) return;
+            Application.Current.Properties.Add("clickedCorn", item);
+            new Corn_info().ShowDialog();
         }
     }
 }

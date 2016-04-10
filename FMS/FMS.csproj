@@ -72,6 +72,24 @@
     <Compile Include="Animal_add.xaml.cs">
       <DependentUpon>Animal_add.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Corn_info.xaml.cs">
+      <DependentUpon>Corn_info.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Property_info.xaml.cs">
+      <DependentUpon>Property_info.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Corn_add.xaml.cs">
+      <DependentUpon>Corn_add.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Corn_edit.xaml.cs">
+      <DependentUpon>Corn_edit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animal_info.xaml.cs">
+      <DependentUpon>Animal_info.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Farmer_info.xaml.cs">
+      <DependentUpon>Farmer_info.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Property_edit.xaml.cs">
       <DependentUpon>Property_edit.xaml</DependentUpon>
     </Compile>
@@ -127,6 +145,30 @@
     <Page Include="Animal_add.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Corn_info.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Property_info.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Corn_add.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Corn_edit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Animal_info.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Farmer_info.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Property_edit.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -186,7 +228,6 @@
     <None Include="FMSModel.edmx.diagram">
       <DependentUpon>FMSModel.edmx</DependentUpon>
     </None>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -18,7 +18,7 @@
                         <ColumnDefinition Width="5*"/>
                         <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
-                    <ListBox x:Name="farmers" Grid.Column="0" ItemsSource="{Binding Path=AllFarmers}">
+                    <ListBox x:Name="farmers" Grid.Column="0" ItemsSource="{Binding Path=AllFarmers}" MouseDoubleClick="Farmers_OnMouseDoubleClick">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
@@ -43,7 +43,7 @@
                         <ColumnDefinition Width="5*"/>
                         <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
-                    <ListBox x:Name="animals" Grid.Column="0" ItemsSource="{Binding AllAnimals}">
+                    <ListBox x:Name="animals" Grid.Column="0" ItemsSource="{Binding AllAnimals}" MouseDoubleClick="Animals_OnMouseDoubleClick">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
@@ -68,7 +68,7 @@
                         <ColumnDefinition Width="5*"/>
                         <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
-                    <ListBox x:Name="properties" Grid.Column="0" ItemsSource="{Binding Path=AllProperties}">
+                    <ListBox x:Name="properties" Grid.Column="0" ItemsSource="{Binding Path=AllProperties}" MouseDoubleClick="Properties_OnMouseDoubleClick">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
@@ -93,7 +93,7 @@
                         <ColumnDefinition Width="5*"/>
                         <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
-                    <ListBox x:Name="corns" Grid.Column="0" ItemsSource="{Binding Path=AllCorns}">
+                    <ListBox x:Name="corns" Grid.Column="0" ItemsSource="{Binding Path=AllCorns}" MouseDoubleClick="Corns_OnMouseDoubleClick">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
