@@ -22,6 +22,8 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=f_id, UpdateSourceTrigger=PropertyChanged}" />
+                                    <TextBlock Text="  " />
                                     <TextBlock Text="{Binding Path=f_lastname, UpdateSourceTrigger=PropertyChanged}" />
                                     <TextBlock Text=", " />
                                     <TextBlock Text="{Binding Path=f_firstname, UpdateSourceTrigger=PropertyChanged}" />
@@ -47,6 +49,8 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=a_id, UpdateSourceTrigger=PropertyChanged}" />
+                                    <TextBlock Text="  " />
                                     <TextBlock Text="{Binding Path=a_species, UpdateSourceTrigger=PropertyChanged}" />
                                     <TextBlock Text=", " />
                                     <TextBlock Text="{Binding Path=a_age, UpdateSourceTrigger=PropertyChanged}" />
@@ -72,6 +76,8 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=p_id, UpdateSourceTrigger=PropertyChanged}" />
+                                    <TextBlock Text="  " />
                                     <TextBlock Text="{Binding Path=p_name, UpdateSourceTrigger=PropertyChanged}" />
                                     <TextBlock Text=", " />
                                     <TextBlock Text="{Binding Path=p_area, UpdateSourceTrigger=PropertyChanged}" />
@@ -97,6 +103,8 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=c_id, UpdateSourceTrigger=PropertyChanged}" />
+                                    <TextBlock Text="  " />
                                     <TextBlock Text="{Binding Path=c_type, UpdateSourceTrigger=PropertyChanged}" />
                                     <TextBlock Text=", " />
                                     <TextBlock Text="{Binding Path=c_class, UpdateSourceTrigger=PropertyChanged}" />
