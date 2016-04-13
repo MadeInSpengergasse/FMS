@@ -20,46 +20,42 @@ namespace FMS
     public partial class Property_add : Window
     {
         FMSentities db;
+       public  ViewModel ViewModel;
         
         public Property_add()
         {
             InitializeComponent();
             db = Application.Current.Properties["db"] as FMSentities;
+
+            ObjectDataProvider odp = this.TryFindResource("viewmodel") as ObjectDataProvider;
+            odp.InitialLoad();
+            ViewModel = odp.Data as ViewModel;
         }
 
         private void add_Click(object sender, RoutedEventArgs e)
         {
             p_property prop = new p_property();
 
-            int farmer;
+            
             float area;
-            int corn;
+            
 
-            bool bfarmer = int.TryParse(p_f_farmer.Text, out farmer);
+            
             bool barea = float.TryParse(p_area.Text, out area);
-            bool bcorn = int.TryParse(p_c_corn.Text, out corn);
+         
 
-            if (p_name.Text == "" || p_description.Text == "" || !bfarmer || !barea || !bcorn)
+            if (p_name.Text == "" || p_description.Text == "" || !barea)
             {
                 MessageBox.Show("Invalid entry", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if (db.f_farmer.Find(farmer) == null)
-            {
-                MessageBox.Show("Invalid farmer", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-            if (db.c_corn.Find(corn) == null)
-            {
-                MessageBox.Show("Invalid corn", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
+        
 
             prop.p_name = p_name.Text;
             prop.p_description = p_description.Text;
-            prop.p_f_farmer = farmer;
+            prop.p_f_farmer = (cb_farmer.SelectedItem as f_farmer).f_id;
             prop.p_area = area;
-            prop.p_c_corn = corn;
+            prop.p_c_corn = (cb_corn.SelectedItem as c_corn).c_id;
 
             db.p_property.Add(prop);
 
