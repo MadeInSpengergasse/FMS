@@ -7,7 +7,10 @@
         mc:Ignorable="d"
         Title="Edit Animal" Height="200" Width="250"
         Closing="Window_Closing">
-    <Grid>
+    <Window.Resources>
+        <ObjectDataProvider x:Key="viewmodel" ObjectType="{x:Type local:ViewModel}" />
+    </Window.Resources>
+    <Grid DataContext="{Binding Source={StaticResource viewmodel}}">
         <Grid.RowDefinitions>
 
             <RowDefinition Height="1*"/>
@@ -37,11 +40,36 @@
         <TextBlock Grid.Column="0" Grid.Row="3" Text="Classification" HorizontalAlignment="Center" VerticalAlignment="Center" />
         <TextBox x:Name="tf_classification" Grid.Column="1" Grid.Row="3" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
-        <TextBlock Grid.Column="0" Grid.Row="4" Text="Farmer Nr." HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBox x:Name="tf_farmer" Grid.Column="1" Grid.Row="4" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock Grid.Column="0" Grid.Row="4" Text="Farmer" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <ComboBox x:Name="cb_farmer" Grid.Row="4" Grid.Column="1" ItemsSource="{Binding Path=AllFarmers}" Width="75">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=f_id, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="  " />
+                        <TextBlock Text="{Binding Path=f_lastname, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text=", " />
+                        <TextBlock Text="{Binding Path=f_firstname, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
 
         <TextBlock Grid.Column="0" Grid.Row="5" Text="Product" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBox x:Name="tf_product" Grid.Column="1" Grid.Row="5" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <ComboBox x:Name="cb_product" Grid.Row="5" Grid.Column="1" ItemsSource="{Binding Path=AllProducts}" Width="75">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=pr_id, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="  " />
+                        <TextBlock Text="{Binding Path=pr_type, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text=", " />
+                        <TextBlock Text="{Binding Path=pr_class, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
         <Button x:Name="edit" Content="Edit" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="6" Click="edit_Click"/>
     </Grid>

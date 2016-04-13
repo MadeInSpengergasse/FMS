@@ -55,6 +55,14 @@ namespace FMS
             }
         }
 
+        public IEnumerable<pr_product> AllProducts
+        {
+            get
+            {
+                return dbglobal.pr_product.ToList();
+            }
+        }
+
         public void RaisePropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

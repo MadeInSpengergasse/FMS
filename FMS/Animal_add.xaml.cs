@@ -21,10 +21,16 @@ namespace FMS
     {
         FMSentities db;
 
+        public ViewModel ViewModel;
+
         public Animal_add()
         {
             InitializeComponent();
             db = Application.Current.Properties["db"] as FMSentities;
+
+            ObjectDataProvider odp = this.TryFindResource("viewmodel") as ObjectDataProvider;
+            odp.InitialLoad();
+            ViewModel = odp.Data as ViewModel;
         }
 
         private void add_Click(object sender, RoutedEventArgs e)
@@ -33,30 +39,20 @@ namespace FMS
             int age;
             float weight;
             int classification;
-            int farmer;
+
             int product;
 
+           
             bool bage = int.TryParse(tf_age.Text, out age);
             bool bweight = float.TryParse(tf_weight.Text, out weight);
             bool bclassifcation = int.TryParse(tf_classification.Text, out classification);
-            bool bfarmer = int.TryParse(tf_farmer.Text, out farmer);
-            bool bproduct = int.TryParse(tf_product.Text, out product);
+            
+          
 
-            if (product == 0)
-            {
-                product = 2;
-            }
-            if (db.pr_product.Find(product) == null)
-            {
-                MessageBox.Show("Invalid product", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-            if (db.f_farmer.Find(farmer) == null)
-            {
-                MessageBox.Show("Invalid farmer", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-            if (tf_species.Text == "" || !bage || !bweight || !bclassifcation || !bfarmer)
+           
+           
+           
+            if (tf_species.Text == "" || !bage || !bweight || !bclassifcation)
             {
                 MessageBox.Show("Invalid", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -66,8 +62,8 @@ namespace FMS
             an.a_age = age;
             an.a_weight = weight;
             an.a_classification = classification;
-            an.f_farmer_f_id = farmer;
-            an.a_pr_product = product;
+            an.f_farmer_f_id = (cb_farmer.SelectedItem as f_farmer).f_id;
+            an.a_pr_product = (cb_product.SelectedItem as pr_product).pr_id;
             db.a_animal.Add(an);
 
             db.SaveChanges();
