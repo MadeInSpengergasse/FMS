@@ -16,17 +16,17 @@
         
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Column="0" Grid.Row="0" Text="Firstname" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBlock x:Name="f_firstname" Grid.Column="1" Grid.Row="0" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock x:Name="f_firstname" Grid.Column="1" Grid.Row="0" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
         <TextBlock Grid.Column="0" Grid.Row="1" Text="Lastname" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBlock x:Name="f_lastname" Grid.Column="1" Grid.Row="1" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock x:Name="f_lastname" Grid.Column="1" Grid.Row="1" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
         <TextBlock Grid.Column="0" Grid.Row="2" Text="Address" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBlock x:Name="f_address" Grid.Column="1" Grid.Row="2" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock x:Name="f_address" Grid.Column="1" Grid.Row="2" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
     </Grid>
 </Window>

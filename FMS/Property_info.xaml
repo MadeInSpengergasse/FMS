@@ -18,22 +18,22 @@
         
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Column="0" Grid.Row="0" Text="Name" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBlock x:Name="p_name" Grid.Column="1" Grid.Row="0" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock x:Name="p_name" Grid.Column="1" Grid.Row="0" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
         <TextBlock Grid.Column="0" Grid.Row="1" Text="Description" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBlock x:Name="p_description" Grid.Column="1" Grid.Row="1" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock x:Name="p_description" Grid.Column="1" Grid.Row="1" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
         <TextBlock Grid.Column="0" Grid.Row="2" Text="Farmer" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBlock x:Name="p_f_farmer" Grid.Column="1" Grid.Row="2" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock x:Name="p_f_farmer" Grid.Column="1" Grid.Row="2" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
         <TextBlock Grid.Column="0" Grid.Row="3" Text="Area" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBlock x:Name="p_area" Grid.Column="1" Grid.Row="3" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock x:Name="p_area" Grid.Column="1" Grid.Row="3" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
         
         <TextBlock Grid.Column="0" Grid.Row="4" Text="Corn" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBlock x:Name="p_c_corn" Grid.Column="1" Grid.Row="4" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock x:Name="p_c_corn" Grid.Column="1" Grid.Row="4" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
     </Grid>
 </Window>
