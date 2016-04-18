@@ -37,6 +37,7 @@ namespace FMS
                 if(asd.f_id == an.f_farmer.f_id)
                 {
                     cb_farmer.SelectedIndex = cb_farmer.Items.IndexOf(asd);
+                    break;
                 }
             }
             foreach (var item in cb_product.Items)
@@ -45,6 +46,7 @@ namespace FMS
                 if (asd.pr_id == an.pr_product.pr_id)
                 {
                     cb_product.SelectedIndex = cb_product.Items.IndexOf(asd);
+                    break;
                 }
             }
 
@@ -62,13 +64,7 @@ namespace FMS
             bool bage = int.TryParse(tf_age.Text, out age);
             bool bweight = float.TryParse(tf_weight.Text, out weight);
             bool bclassifcation = int.TryParse(tf_classification.Text, out classification);
-           
-           
 
-           
-            
-           
-           
             if (tf_species.Text == "" || !bage || !bweight || !bclassifcation)
             {
                 MessageBox.Show("Invalid ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
