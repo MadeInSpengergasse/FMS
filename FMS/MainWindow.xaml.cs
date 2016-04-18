@@ -110,6 +110,7 @@ namespace FMS
             an.ShowDialog();
 
             ViewModel.RaisePropertyChanged("AllAnimals");
+
         }
 
         private void A_delete_Click(object sender, RoutedEventArgs e)
@@ -234,6 +235,11 @@ namespace FMS
             if (item == null) return;
             Application.Current.Properties.Add("clickedCorn", item);
             new Corn_info().ShowDialog();
+        }
+
+        private void F_products_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

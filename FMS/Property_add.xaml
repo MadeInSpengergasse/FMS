@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:FMS"
         mc:Ignorable="d"
         Title="Add property" Height="200" Width="250">
-    <Grid>
+    <Window.Resources>
+        <ObjectDataProvider x:Key="viewmodel" ObjectType="{x:Type local:ViewModel}" />
+    </Window.Resources>
+    <Grid DataContext="{Binding Source={StaticResource viewmodel}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
@@ -29,13 +32,36 @@
         <TextBox x:Name="p_description" Grid.Column="1" Grid.Row="1" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
         
         <TextBlock Grid.Column="0" Grid.Row="2" Text="Farmer" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBox x:Name="p_f_farmer" Grid.Column="1" Grid.Row="2" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
-
+        <ComboBox x:Name="cb_farmer" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Path=AllFarmers}" Width="75">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=f_id, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="  " />
+                        <TextBlock Text="{Binding Path=f_lastname, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text=", " />
+                        <TextBlock Text="{Binding Path=f_firstname, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <TextBlock Grid.Column="0" Grid.Row="3" Text="Area" HorizontalAlignment="Center" VerticalAlignment="Center" />
         <TextBox x:Name="p_area" Grid.Column="1" Grid.Row="3" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
         <TextBlock Grid.Column="0" Grid.Row="4" Text="Corn" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBox x:Name="p_c_corn" Grid.Column="1" Grid.Row="4" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <ComboBox x:Name="cb_corn" Grid.Row="4" Grid.Column="1" ItemsSource="{Binding Path=AllCorns}" Width="75">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=c_id, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="  " />
+                        <TextBlock Text="{Binding Path=c_type, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text=", " />
+                        <TextBlock Text="{Binding Path=c_class, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
         <Button x:Name="add" Content="Add" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" Click="add_Click"/>
     </Grid>

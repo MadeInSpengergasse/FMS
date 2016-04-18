@@ -34,7 +34,8 @@
                     <StackPanel Grid.Column="1">
                         <Button x:Name="F_add"  Click="F_add_Click" Content="Add" Margin="0 0 0 15"/>
                         <Button x:Name="F_edit" Click="F_edit_Click" Content="Edit" Margin="0 0 0 15"/>
-                        <Button x:Name="F_delete" Click="F_delete_Click" Content="Delete" Margin="0 0 0 5" />
+                        <Button x:Name="F_delete" Click="F_delete_Click" Content="Delete" Margin="0 0 0 15" />
+                        <Button x:Name="F_products" Click="F_products_Click" Content="Products" Margin="0 0 0 5" />
                     </StackPanel>
                 </Grid>
             </TabItem>

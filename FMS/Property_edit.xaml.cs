@@ -21,6 +21,7 @@ namespace FMS
     {
         private FMSentities db;
         private p_property prop;
+        
 
         public Property_edit()
         {
@@ -30,42 +31,47 @@ namespace FMS
 
             p_name.Text = prop.p_name;
             p_description.Text = prop.p_description;
-            p_f_farmer.Text = prop.p_f_farmer.ToString();
+           
             p_area.Text = prop.p_area.ToString();
-            p_c_corn.Text = prop.p_c_corn.ToString();
+            
+            foreach (var item in cb_farmer.Items)
+            {
+                var asd = item as f_farmer;
+                if (asd.f_id == prop.f_farmer.f_id)
+                {
+                    cb_farmer.SelectedIndex = cb_farmer.Items.IndexOf(asd);
+                }
+            }
+            foreach (var item in cb_corn.Items)
+            {
+                var asd = item as c_corn;
+                if (asd.c_id == prop.c_corn.c_id)
+                {
+                    cb_corn.SelectedIndex = cb_corn.Items.IndexOf(asd);
+                }
+            }
         }
 
         private void edit_Click(object sender, RoutedEventArgs e)
         {
-            int farmer;
+            
             float area;
-            int corn;
+           
 
-            bool bfarmer = int.TryParse(p_f_farmer.Text, out farmer);
+           
             bool barea = float.TryParse(p_area.Text, out area);
-            bool bcorn = int.TryParse(p_c_corn.Text, out corn);
+          
 
-            if (p_name.Text == "" || p_description.Text == "" || !bfarmer || !barea || !bcorn)
+            if (p_name.Text == "" || p_description.Text == "" || !barea)
             {
                 MessageBox.Show("Invalid entry", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if (db.f_farmer.Find(farmer) == null)
-            {
-                MessageBox.Show("Invalid farmer", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-            if (db.c_corn.Find(corn) == null)
-            {
-                MessageBox.Show("Invalid corn", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
             prop.p_name = p_name.Text;
             prop.p_description = p_description.Text;
-            prop.p_f_farmer = farmer;
+            prop.p_f_farmer = (cb_farmer.SelectedItem as f_farmer).f_id;
             prop.p_area = area;
-            prop.p_c_corn = corn;
+            prop.p_c_corn = (cb_corn.SelectedItem as c_corn).c_id;
 
             var original = db.p_property.Find(prop.p_id);
             if (original != null)
@@ -80,8 +86,5 @@ namespace FMS
         {
             Application.Current.Properties.Remove("selectedProperty");
         }
-
-        
-
     }
 }
