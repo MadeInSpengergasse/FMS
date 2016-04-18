@@ -20,11 +20,17 @@ namespace FMS
     public partial class Corn_add : Window
     {
         FMSentities db;
-        
+
+        public ViewModel ViewModel;
+
         public Corn_add()
         {
             InitializeComponent();
             db = Application.Current.Properties["db"] as FMSentities;
+
+            ObjectDataProvider odp = this.TryFindResource("viewmodel") as ObjectDataProvider;
+            odp.InitialLoad();
+            ViewModel = odp.Data as ViewModel;
         }
 
         private void add_Click(object sender, RoutedEventArgs e)
@@ -33,27 +39,20 @@ namespace FMS
 
             int class_;
             int dour;
-            int product;
 
             bool bclass = int.TryParse(c_class.Text, out class_);
             bool bdour = int.TryParse(c_dour.Text, out dour);
-            bool bproduct = int.TryParse(c_pr_product.Text, out product);
-            //TODO: Product can be null
-            if (c_type.Text == "" || !bclass || !bdour || !bproduct)
+
+            if (c_type.Text == "" || !bclass || !bdour)
             {
                 MessageBox.Show("Invalid entry", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-            if (db.pr_product.Find(product) == null)
-            {
-                MessageBox.Show("Invalid product", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             corn.c_type = c_type.Text;
             corn.c_class = class_;
             corn.c_dour = dour;
-            corn.c_pr_product = product;
+            corn.c_pr_product = (c_pr_product.SelectedItem as pr_product).pr_id;
 
             db.c_corn.Add(corn);
             db.SaveChanges();

@@ -172,6 +172,7 @@ namespace FMS
             cornadd.ShowDialog();
 
             ViewModel.RaisePropertyChanged("AllCorns");
+            ViewModel.RaisePropertyChanged("AllProducts");
         }
 
         private void C_edit_Click(object sender, RoutedEventArgs e)
@@ -186,6 +187,7 @@ namespace FMS
             cornedit.ShowDialog();
 
             ViewModel.RaisePropertyChanged("AllCorns");
+            ViewModel.RaisePropertyChanged("AllProducts");
         }
 
         private void C_delete_Click(object sender, RoutedEventArgs e)

@@ -22,43 +22,54 @@ namespace FMS
         private FMSentities db;
         private c_corn corn;
 
+        public ViewModel ViewModel;
+
         public Corn_edit()
         {
             InitializeComponent();
             db = Application.Current.Properties["db"] as FMSentities;
             corn = Application.Current.Properties["selectedCorn"] as c_corn;
 
+            ObjectDataProvider odp = this.TryFindResource("viewmodel") as ObjectDataProvider;
+            odp.InitialLoad();
+            ViewModel = odp.Data as ViewModel;
+
+            //TODO: Fix
+
             c_type.Text = corn.c_type;
             c_class.Text = corn.c_class.ToString();
             c_dour.Text = corn.c_dour.ToString();
-            c_pr_product.Text = corn.c_pr_product.ToString();
+            //c_pr_product.Text = corn.c_pr_product.ToString();
+
+            foreach (var item in c_pr_product.Items)
+            {
+                var asd = item as pr_product;
+                if (asd.pr_id == corn.pr_product.pr_id)
+                {
+                    c_pr_product.SelectedIndex = c_pr_product.Items.IndexOf(asd);
+                    break;
+                }
+            }
         }
 
         private void edit_Click(object sender, RoutedEventArgs e)
         {
             int class_;
             int dour;
-            int product;
 
             bool bclass = int.TryParse(c_class.Text, out class_);
             bool bdour = int.TryParse(c_dour.Text, out dour);
-            bool bproduct = int.TryParse(c_pr_product.Text, out product);
-            //TODO: Product can be null
-            if (c_type.Text == "" || !bclass || !bdour || !bproduct)
+
+            if (c_type.Text == "" || !bclass || !bdour)
             {
                 MessageBox.Show("Invalid entry", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-            if (db.pr_product.Find(product) == null)
-            {
-                MessageBox.Show("Invalid product", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             corn.c_type = c_type.Text;
             corn.c_class = class_;
             corn.c_dour = dour;
-            corn.c_pr_product = product;
+            corn.c_pr_product = (c_pr_product.SelectedItem as pr_product).pr_id;
 
             var original = db.c_corn.Find(corn.c_id);
             if (original != null)
