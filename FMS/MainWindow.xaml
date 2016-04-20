@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FMS"
         mc:Ignorable="d"
-        Title="Farm-Management-Software" Height="350" Width="525">
+        Title="Farm-Management-Software"
+        Height="350" Width="525"
+        MinHeight="200" MinWidth="300">
 
    <Window.Resources>
         <ObjectDataProvider x:Key="viewmodel" ObjectType="{x:Type local:ViewModel}" />

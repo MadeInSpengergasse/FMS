@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FMS"
         mc:Ignorable="d"
-        Title="Add property" Height="200" Width="250">
+        Title="Add property"
+        Height="300" Width="350"
+        MinHeight="300" MinWidth="350">
     <Window.Resources>
         <ObjectDataProvider x:Key="viewmodel" ObjectType="{x:Type local:ViewModel}" />
     </Window.Resources>
@@ -21,18 +23,18 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
 
        
         <TextBlock Grid.Column="0" Grid.Row="0" Text="Name" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBox x:Name="p_name" Grid.Column="1" Grid.Row="0" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBox x:Name="p_name" Grid.Column="1" Grid.Row="0" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
         
         <TextBlock Grid.Column="0" Grid.Row="1" Text="Description" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBox x:Name="p_description" Grid.Column="1" Grid.Row="1" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBox x:Name="p_description" Grid.Column="1" Grid.Row="1" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
         
         <TextBlock Grid.Column="0" Grid.Row="2" Text="Farmer" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <ComboBox x:Name="cb_farmer" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Path=AllFarmers}" Width="75">
+        <ComboBox x:Name="cb_farmer" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Path=AllFarmers}" Width="150" Height="25">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -45,11 +47,12 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
+        
         <TextBlock Grid.Column="0" Grid.Row="3" Text="Area" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBox x:Name="p_area" Grid.Column="1" Grid.Row="3" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBox x:Name="p_area" Grid.Column="1" Grid.Row="3" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
         <TextBlock Grid.Column="0" Grid.Row="4" Text="Corn" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <ComboBox x:Name="cb_corn" Grid.Row="4" Grid.Column="1" ItemsSource="{Binding Path=AllCorns}" Width="75">
+        <ComboBox x:Name="cb_corn" Grid.Row="4" Grid.Column="1" ItemsSource="{Binding Path=AllCorns}" Width="150" Height="25">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
