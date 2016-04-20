@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FMS"
         mc:Ignorable="d"
-        Title="Add Animal" Height="200" Width="250">
+        Title="Add Animal"
+        Height="300" Width="350"
+        MinHeight="300" MinWidth="350">
     <Window.Resources>
         <ObjectDataProvider x:Key="viewmodel" ObjectType="{x:Type local:ViewModel}" />
     </Window.Resources>
@@ -23,25 +25,25 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
 
        
         <TextBlock Grid.Column="0" Grid.Row="0" Text="Species" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBox x:Name="tf_species" Grid.Column="1" Grid.Row="0" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBox x:Name="tf_species" Grid.Column="1" Grid.Row="0" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
         
         <TextBlock Grid.Column="0" Grid.Row="1" Text="Age" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBox x:Name="tf_age" Grid.Column="1" Grid.Row="1" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBox x:Name="tf_age" Grid.Column="1" Grid.Row="1" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
         
         <TextBlock Grid.Column="0" Grid.Row="2" Text="Weight" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBox x:Name="tf_weight" Grid.Column="1" Grid.Row="2" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBox x:Name="tf_weight" Grid.Column="1" Grid.Row="2" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
         <TextBlock Grid.Column="0" Grid.Row="3" Text="Classification" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBox x:Name="tf_classification" Grid.Column="1" Grid.Row="3" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBox x:Name="tf_classification" Grid.Column="1" Grid.Row="3" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
         <TextBlock Grid.Column="0" Grid.Row="4" Text="Farmer" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        
-        <ComboBox x:Name="cb_farmer" Grid.Row="4" Grid.Column="1" ItemsSource="{Binding Path=AllFarmers}" Width="75">
+
+        <ComboBox x:Name="cb_farmer" Grid.Row="4" Grid.Column="1" ItemsSource="{Binding Path=AllFarmers}" Width="150" Margin="0 8 0 8">
             <ComboBox.ItemTemplate>
             <DataTemplate>
                 <StackPanel Orientation="Horizontal">
@@ -56,7 +58,7 @@
         </ComboBox>
 
         <TextBlock Grid.Column="0" Grid.Row="5" Text="Product" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <ComboBox x:Name="cb_product" Grid.Row="5" Grid.Column="1" ItemsSource="{Binding Path=AllProducts}" Width="75">
+        <ComboBox x:Name="cb_product" Grid.Row="5" Grid.Column="1" ItemsSource="{Binding Path=AllProducts}" Width="150" Margin="0 8 0 8">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">

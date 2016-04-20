@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FMS"
         mc:Ignorable="d"
-        Title="Add corn" Height="200" Width="250">
+        Title="Add corn"
+        Height="300" Width="350"
+        MinHeight="300" MinWidth="350">
     <Window.Resources>
         <ObjectDataProvider x:Key="viewmodel" ObjectType="{x:Type local:ViewModel}" />
     </Window.Resources>
@@ -20,23 +22,21 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
 
        
         <TextBlock Grid.Column="0" Grid.Row="0" Text="Type" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBox x:Name="c_type" Grid.Column="1" Grid.Row="0" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBox x:Name="c_type" Grid.Column="1" Grid.Row="0" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
         
         <TextBlock Grid.Column="0" Grid.Row="1" Text="Class" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBox x:Name="c_class" Grid.Column="1" Grid.Row="1" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBox x:Name="c_class" Grid.Column="1" Grid.Row="1" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
         
         <TextBlock Grid.Column="0" Grid.Row="2" Text="Dour" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBox x:Name="c_dour" Grid.Column="1" Grid.Row="2" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBox x:Name="c_dour" Grid.Column="1" Grid.Row="2" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
         <TextBlock Grid.Column="0" Grid.Row="3" Text="Product" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <!--<TextBox x:Name="c_pr_product" Grid.Column="1" Grid.Row="3" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" />-->
-
-        <ComboBox x:Name="c_pr_product" Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Path=AllProducts}" Width="75">
+        <ComboBox x:Name="c_pr_product" Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Path=AllProducts}" Width="150" Height="25">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
