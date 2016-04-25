@@ -36,5 +36,10 @@ namespace FMS
             var asd = a.ToList();
             products.ItemsSource = a.ToList().ToList();
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Application.Current.Properties.Remove("farmer");
+        }
     }
 }
