@@ -41,6 +41,8 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding Path=pr_type, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text=", " />
+                        <TextBlock Text="{Binding Path=pr_class, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
