@@ -239,7 +239,16 @@ namespace FMS
 
         private void F_products_Click(object sender, RoutedEventArgs e)
         {
+            var farmer = farmers.SelectedItem as f_farmer;
+            if (farmer == null)
+            {
+                return;
+            }
 
+            Application.Current.Properties.Add("farmer", farmer);
+            var farmproducts = new Farmer_Product();
+
+            farmproducts.ShowDialog();
         }
     }
 }
