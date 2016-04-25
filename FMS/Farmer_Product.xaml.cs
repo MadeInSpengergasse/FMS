@@ -27,14 +27,12 @@ namespace FMS
             InitializeComponent();
             f = Application.Current.Properties["farmer"] as f_farmer;
             db = Application.Current.Properties["db"] as FMSentities;
-            //var animal = db.a_animal;
-            //animal.Load();
+
             var a = from b in db.a_animal
                            where b.f_farmer.f_id == f.f_id
-                           select b.pr_product.pr_type ;
+                           select b.pr_product;
             a.Load();
-            var asd = a.ToList();
-            products.ItemsSource = a.ToList().ToList();
+            products.ItemsSource = a.ToList();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
