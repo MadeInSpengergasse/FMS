@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FMS"
         mc:Ignorable="d"
-        Title="Products" Height="300" Width="300">
+        Title="Products" Height="300" Width="300"
+        Closing="Window_Closing">
     <Window.Resources>
         <ObjectDataProvider x:Key="viewmodel" ObjectType="{x:Type local:ViewModel}" />
     </Window.Resources>
