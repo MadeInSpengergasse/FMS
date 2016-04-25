@@ -38,8 +38,6 @@
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Path=f_id, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock Text="  " />
                         <TextBlock Text="{Binding Path=f_lastname, UpdateSourceTrigger=PropertyChanged}" />
                         <TextBlock Text=", " />
                         <TextBlock Text="{Binding Path=f_firstname, UpdateSourceTrigger=PropertyChanged}" />
@@ -56,8 +54,6 @@
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Path=c_id, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock Text="  " />
                         <TextBlock Text="{Binding Path=c_type, UpdateSourceTrigger=PropertyChanged}" />
                         <TextBlock Text=", " />
                         <TextBlock Text="{Binding Path=c_class, UpdateSourceTrigger=PropertyChanged}" />
