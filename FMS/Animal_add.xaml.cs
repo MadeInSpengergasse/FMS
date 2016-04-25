@@ -39,20 +39,13 @@ namespace FMS
             int age;
             float weight;
             int classification;
-
             int product;
 
-           
             bool bage = int.TryParse(tf_age.Text, out age);
             bool bweight = float.TryParse(tf_weight.Text, out weight);
             bool bclassifcation = int.TryParse(tf_classification.Text, out classification);
-            
-          
-
            
-           
-           
-            if (tf_species.Text == "" || !bage || !bweight || !bclassifcation)
+            if (tf_species.Text == "" || !bage || !bweight || !bclassifcation || cb_farmer.SelectedItem == null)
             {
                 MessageBox.Show("Invalid", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -63,7 +56,7 @@ namespace FMS
             an.a_weight = weight;
             an.a_classification = classification;
             an.f_farmer_f_id = (cb_farmer.SelectedItem as f_farmer).f_id;
-            an.a_pr_product = (cb_product.SelectedItem as pr_product).pr_id;
+            an.a_pr_product = cb_product.SelectedItem == null ? 2 : (cb_product.SelectedItem as pr_product).pr_id;
             db.a_animal.Add(an);
 
             db.SaveChanges();
